@@ -31,6 +31,8 @@
 
 # conn.close()
 
+
+#-------------------- IT IS A JUST FOR TRY, NO ANY CONNECTION IN OFLLINE DATA FILE --------------------
 import mysql.connector
 def str(sid , username , Roll_No , marks , Phone_no , Email):
     try:
