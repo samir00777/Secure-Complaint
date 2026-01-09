@@ -1,0 +1,38 @@
+real app flow
+
+Signup → Login → Dashboard → XYZ Features → Logout
+
+
+# for password
+At least 8 charactersAt least 8 characters: Pass.
+At least 3 of the following:At least 3 of the following:: Pass.
+    Lower case letters (a-z)Lower case letters (a-z): Pass.
+    Upper case letters (A-Z)Upper case letters (A-Z): Pass.
+    Numbers (0-9)Numbers (0-9): Pass.
+    Special characters (e.g. !@#$%^&*)Special characters (e.g. !@#$%^&*): Pass.
+No more than 2 identical characters in a row
+
+
+
+
+
+# update value in supabase 
+supabase.table("complaints") \
+    .update({"status": "Resolved"}) \
+    .eq("complaint_id", cid) \
+    .execute()
+
+\ <-- is a line continuation
+
+
+
+go data api and copy to url
+go on api keys --> secound seccion and copy {{{{{{((((anon public))))}}}}}}
+then rls dissable karo
+
+--> to the enjoy
+
+
+------------------------------------------------------------------------------(TRUNCATE TABLE)
+TRUNCATE TABLE public."Student_Data";
+------------------------------------------------------------------------------
