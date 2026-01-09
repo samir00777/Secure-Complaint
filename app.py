@@ -26,25 +26,17 @@ def home():
 def submit():
     # read username from web page
     # and .get mathod is avoid if it is null
-    # default store a string 
-    username = request.form.get('username') 
-    sid = int(request.form.get('sid'))
-    Roll_No = int(request.form.get('Roll_No'))
-    marks = int(request.form.get('marks'))
-    Phone_no = int(request.form.get('Phone_no'))
-    Email = request.form.get('Email')
+    # default store a string
 
+    
     # Returned_by_email = Emaillll.send_email_using_smtplib(Email)
-    # connect_with_storage.str(sid , username , Roll_No , marks , Phone_no , Email)
 
-    print(username , sid , Roll_No , marks , Phone_no , Email)
 
     # return  redirect(url_for('http://127.0.0.1:5000/'))
     # same page are closed and new page are loded 
     # url_for is   auto update page
+    redirect(url_for('home'))
 
-    # login()
-    return redirect(url_for('home'))
     
 
 
