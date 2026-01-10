@@ -36,3 +36,32 @@ then rls dissable karo
 ------------------------------------------------------------------------------(TRUNCATE TABLE)
 TRUNCATE TABLE public."Student_Data";
 ------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+BASIC FILE OF FLASK AND BASIC FOUNT AND BACK END 
+
+from flask import Flask, request, send_file, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return send_file('index.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    option = request.form['option']
+    print(option)   # 🔥 terminal ma print thase
+    return redirect(url_for('home'))
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

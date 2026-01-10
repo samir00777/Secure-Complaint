@@ -4,36 +4,18 @@
     <title>Flask Frontend</title>
 </head>
 <body>
-    <h2>Simple Flask Frontend</h2>
+    <h1>Welcome to the Flask Frontend</h1>
 
+    <h3>Student Complaint Form</h3>
+    <h4>
+        enter 1 for student <br>
+        enter 2 for teacher <br>
+        enter 3 for head
+    </h4>
+
+    <!-- FORM REQUIRED -->
     <form action="/submit" method="post">
-
-        <!-- for id -->
-        <label>Enter your id:</label><br><br>
-        <input type="text" name="sid" required><br><br>
-
-        <!-- roll no -->
-        <label>Enter your Roll No:</label><br><br>
-        <input type="text" name="Roll_No" required><br><br>
-
-
-        <!-- for name -->
-        <label>Enter your name:</label><br><br>
-        <input type="text" name="username" required><br><br>
-
-        <!-- for marks -->
-        <label>Enter your marks:</label><br><br>
-        <input type="text" name="marks" required><br><br>
-
-        <!-- Phone no -->
-        <label>Enter your Phone no:</label><br><br>
-        <input type="text" name="Phone_no" required><br><br>
-
-        <!-- Email -->
-        <label>Enter your Email:</label><br><br>
-        <input type="text" name="Email" required><br><br>
-
-
+        <input type="text" name="option" placeholder="Enter option here" required>
         <button type="submit">Submit</button>
     </form>
 
