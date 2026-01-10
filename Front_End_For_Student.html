@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front_End_For_Student</title>
+  <title>Student Complaint</title>
 </head>
-<body method="post" action="/submit">
-    
-    <label>Enter your id:</label><br><br>
-    <input type="text" name="Roll_No"><br><br>
+<body>
+  <h2>Student Complaint Form</h2>
 
-    <label>Enrollment No:</label><br><br>
-    <input type="text" name="Enrollment_No"><br><br>
+  <form action="/student" method="post">
+    <input type="number" name="Roll_No" placeholder="Roll No" required><br><br>
+    <input type="number" name="Enrollment_No" placeholder="Enrollment No" required><br><br>
+    <input type="text" name="Name" placeholder="Name" required><br><br>
+    <input type="email" name="Email_Id" placeholder="Email" required><br><br>
+    <input type="number" name="Phone_no" placeholder="Phone No" required><br><br>
+    <textarea name="Complaint" placeholder="Complaint" required></textarea><br><br>
 
-    <label>Enter your name:</label><br><br>
-    <input type="text" name="username"><br><br>
+    <button type="submit">Submit</button>
+  </form>
 
-    <label>Enter Email Id:</label><br><br>
-    <input type="text" name="Email_Id"><br><br>
-
-    <label>Enter your Phone no:</label><br><br>
-    <input type="text" name="Phone_no"><br><br>
-
-    <label>Enter your Complaint:</label><br><br>
-    <input type="text" name="Complaint"><br><br>
 </body>
 </html>
