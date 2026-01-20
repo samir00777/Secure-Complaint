@@ -56,7 +56,7 @@
 
 
 
-
+# 'http://127.0.0.1:5000/'
 from flask import Flask, request, send_file, redirect, url_for
 
 app = Flask(__name__)
@@ -69,10 +69,68 @@ def home():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    option = request.form['option']
+    option = request.form['option'].lower()
     print(option)
+    if option == 'head':
+        return send_file('Front_End_For_Head.html')
+    elif option == 'teacher':
+        return send_file('Front_End_For_Teacher.html')
+    elif option == 'student':
+        return send_file('Front_End_For_Student.html')
+    else:
+        return redirect(url_for('home'))
+
+
+
+
+
+
+@app.route("/student_submit", methods=['POST'])
+def student_submit():
+    roll_no = request.form.get('Roll_No')
+    enrollment_no = request.form.get('Enrollment_No')
+    name = request.form.get('Name')
+    email = request.form.get('Email_Id')
+    phone = request.form.get('Phone_no')
+    complaint = request.form.get('Complaint')
+
+    print("----- STUDENT DATA -----")
+    print("Roll No:", roll_no)
+    print("Enrollment No:", enrollment_no)
+    print("Name:", name)
+    print("Email:", email)
+    print("Phone:", phone)
+    print("Complaint:", complaint)
+
+    return "Student data captured successfully!"
+
+
+# ---------------- TEACHER FORM ----------------
+@app.route('/teacher_submit', methods=['POST'])
+def teacher_submit():
+    name = request.form.get('name')
+    complaint = request.form.get('complaint')
+
+    print("TEACHER DATA")
+    print(name, complaint)
+
     return redirect(url_for('home'))
+
+
+# ---------------- HEAD FORM ----------------
+@app.route('/head_submit', methods=['POST'])
+def head_submit():
+    name = request.form.get('name')
+    complaint = request.form.get('complaint')
+
+    print("HEAD DATA")
+    print(name, complaint)
+
+    return redirect(url_for('home'))
+
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
