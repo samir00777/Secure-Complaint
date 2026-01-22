@@ -52,12 +52,9 @@
 
 
 
-
-
-
-
 # 'http://127.0.0.1:5000/'
 from flask import Flask, request, send_file, redirect, url_for
+import Emaillll as email_module
 
 app = Flask(__name__)
 
@@ -94,13 +91,7 @@ def student_submit():
     phone = request.form.get('Phone_no')
     complaint = request.form.get('Complaint')
 
-    print("----- STUDENT DATA -----")
-    print("Roll No:", roll_no)
-    print("Enrollment No:", enrollment_no)
-    print("Name:", name)
-    print("Email:", email)
-    print("Phone:", phone)
-    print("Complaint:", complaint)
+    email_module.send_email_using_smtplib(email)
 
     return "Student data captured successfully!"
 
@@ -108,11 +99,15 @@ def student_submit():
 # ---------------- TEACHER FORM ----------------
 @app.route('/teacher_submit', methods=['POST'])
 def teacher_submit():
-    name = request.form.get('name')
-    complaint = request.form.get('complaint')
+    
+    Teacher_id = request.form.get('Teacher_Id')
+    Name = request.form.get('Name')
+    Phone_no = request.form.get('Phone_no')
+    email = request.form.get('Email_Id')
+    Complaint = request.form.get('Complaint')
 
-    print("TEACHER DATA")
-    print(name, complaint)
+    print("-------teacher data-------")
+    print(Teacher_id, Name, Phone_no, email, Complaint)
 
     return redirect(url_for('home'))
 
@@ -120,11 +115,15 @@ def teacher_submit():
 # ---------------- HEAD FORM ----------------
 @app.route('/head_submit', methods=['POST'])
 def head_submit():
-    name = request.form.get('name')
-    complaint = request.form.get('complaint')
+    
+    Head_id = request.form.get('Head_Id')
+    Name = request.form.get('Name')
+    Phone_no = request.form.get('Phone_no')
+    email = request.form.get('Email')
+    Complaint = request.form.get('Complaint')
 
-    print("HEAD DATA")
-    print(name, complaint)
+    print("-------head data-------")
+    print(Head_id, Name, Phone_no, email, Complaint)
 
     return redirect(url_for('home'))
 
@@ -132,5 +131,3 @@ def head_submit():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
