@@ -17,5 +17,4 @@ data = {
     "Complaint": "Water facility is not working properly"
 }
 
-res = supabase.table("Student_Data").insert(data).execute()
-print(res.data, "<-----------")
+supabase.table("Student_Data").insert(data).execute()

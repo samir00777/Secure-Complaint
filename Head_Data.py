@@ -17,5 +17,4 @@ data = {
 }
 
 
-res = supabase.table("Head_Data").insert(data).execute()
-print(res.data, "<-----------")
+supabase.table("Head_Data").insert(data).execute()

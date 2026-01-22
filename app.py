@@ -55,6 +55,9 @@
 # 'http://127.0.0.1:5000/'
 from flask import Flask, request, send_file, redirect, url_for
 import Emaillll as email_module
+import Student_data as student_module
+import Teacher_Data as teacher_module
+import Head_Data as head_module
 
 app = Flask(__name__)
 
@@ -91,7 +94,10 @@ def student_submit():
     phone = request.form.get('Phone_no')
     complaint = request.form.get('Complaint')
 
-    email_module.send_email_using_smtplib(email)
+    # email_module.send_email_using_smtplib(email)
+
+    print("-------student data-------")
+    print(roll_no, enrollment_no, name, email, phone, complaint)
 
     return "Student data captured successfully!"
 
