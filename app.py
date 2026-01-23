@@ -55,6 +55,7 @@
 # 'http://127.0.0.1:5000/'
 from flask import Flask, request, send_file, redirect, url_for
 import calculate_cmpl as cal
+import Find_User as find_user
 
 app = Flask(__name__)
 
@@ -81,8 +82,10 @@ def submit():
         else:
             return redirect(url_for('home'))
     elif ls_option == 'signup':
-        pass
-        # agad kaam chalu che 
+        # check user found or not
+        # find_user.FIND_HEAD_IN_SUPABASE(option)
+        # aagad kaam chalu che 
+        pass 
 
 
 
