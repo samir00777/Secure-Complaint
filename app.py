@@ -54,10 +54,7 @@
 
 # 'http://127.0.0.1:5000/'
 from flask import Flask, request, send_file, redirect, url_for
-import Emaillll as email_module
-import Student_data as student_module
-import Teacher_Data as teacher_module
-import Head_Data as head_module
+import calculate_cmpl as cal
 
 app = Flask(__name__)
 
@@ -69,16 +66,23 @@ def home():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+
+    ls_option = request.form['LS_option'].lower()
     option = request.form['option'].lower()
-    print(option)
-    if option == 'head':
-        return send_file('Front_End_For_Head.html')
-    elif option == 'teacher':
-        return send_file('Front_End_For_Teacher.html')
-    elif option == 'student':
-        return send_file('Front_End_For_Student.html')
-    else:
-        return redirect(url_for('home'))
+    print(option , ls_option)
+
+    if ls_option == 'login':
+        if option == 'head':
+            return send_file('Front_End_For_Head.html')
+        elif option == 'teacher':
+            return send_file('Front_End_For_Teacher.html')
+        elif option == 'student':
+            return send_file('Front_End_For_Student.html')
+        else:
+            return redirect(url_for('home'))
+    elif ls_option == 'signup':
+        pass
+        # agad kaam chalu che 
 
 
 
@@ -99,7 +103,7 @@ def student_submit():
     print("-------student data-------")
     print(roll_no, enrollment_no, name, email, phone, complaint)
 
-    return "Student data captured successfully!"
+    return redirect(url_for('home'))
 
 
 # ---------------- TEACHER FORM ----------------
@@ -125,7 +129,7 @@ def head_submit():
     Head_id = request.form.get('Head_Id')
     Name = request.form.get('Name')
     Phone_no = request.form.get('Phone_no')
-    email = request.form.get('Email')
+    email = request.form.get('Email_Id')
     Complaint = request.form.get('Complaint')
 
     print("-------head data-------")

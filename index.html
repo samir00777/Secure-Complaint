@@ -2,6 +2,31 @@
 <html>
 <head>
     <title>Flask Frontend</title>
+
+    <style>
+        .auth-select
+        {
+            display:flex;
+            border:1px solid #ddd;
+            border-radius:10px;
+            overflow:hidden;
+            width:220px;
+        }
+        .auth-select button
+        {
+            flex:1;
+            padding:12px;
+            border:none;
+            cursor:pointer;
+            background:#f2f2f2;
+            font-weight:600;
+        }
+        .auth-select button.active
+        {
+            background:#4CAF50;
+            color:white;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Flask Frontend</h1>
@@ -15,9 +40,24 @@
 
     <!-- FORM REQUIRED -->
     <form action="/submit" method="post">
+        <input type="text" name = "LS_option" placeholder="Enter login yaa Signup" required>
         <input type="text" name="option" placeholder="Enter option here" required>
-        <button type="submit">Submit</button>
+        <button type="submit">Enter</button>
     </form>
+    
 
+    <!-- <div class="auth-select">
+    <button class="active" onclick="selectAuth(this)">Login</button>
+    <button onclick="selectAuth(this)">Signup</button>
+    </div>
+
+    <script>
+        function selectAuth(btn)
+        {
+            document.querySelectorAll('.auth-select button')
+                .forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script> -->
 </body>
 </html>
