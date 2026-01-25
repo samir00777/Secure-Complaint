@@ -100,12 +100,12 @@ def student_submit():
     name = request.form.get('Name')
     email = request.form.get('Email_Id')
     phone = request.form.get('Phone_no')
-    complaint = request.form.get('Complaint')
+    password = request.form.get('password')
 
     # email_module.send_email_using_smtplib(email)
 
     print("-------student data-------")
-    print(roll_no, enrollment_no, name, email, phone, complaint)
+    print(roll_no, enrollment_no, name, email, phone, password)
 
     return redirect(url_for('home'))
 
@@ -118,10 +118,9 @@ def teacher_submit():
     Name = request.form.get('Name')
     Phone_no = request.form.get('Phone_no')
     email = request.form.get('Email_Id')
-    Complaint = request.form.get('Complaint')
-
+    password = request.form.get('password')
     print("-------teacher data-------")
-    print(Teacher_id, Name, Phone_no, email, Complaint)
+    print(Teacher_id, Name, Phone_no, email, password)
 
     return redirect(url_for('home'))
 
@@ -134,10 +133,10 @@ def head_submit():
     Name = request.form.get('Name')
     Phone_no = request.form.get('Phone_no')
     email = request.form.get('Email_Id')
-    Complaint = request.form.get('Complaint')
+    password = request.form.get('password')
 
     print("-------head data-------")
-    print(Head_id, Name, Phone_no, email, Complaint)
+    print(Head_id, Name, Phone_no, email, password)
 
     return redirect(url_for('home'))
 

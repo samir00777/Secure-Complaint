@@ -4,60 +4,104 @@
     <title>Flask Frontend</title>
 
     <style>
-        .auth-select
-        {
+        body{
+            font-family: Arial;
+            background:#f4f6f8;
+            height:100vh;
             display:flex;
-            border:1px solid #ddd;
-            border-radius:10px;
-            overflow:hidden;
-            width:220px;
+            justify-content:center;
+            align-items:center;
         }
-        .auth-select button
-        {
+        .card{
+            background:white;
+            padding:25px;
+            width:360px;
+            border-radius:12px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        }
+        h1{
+            text-align:center;
+            margin-bottom:5px;
+        }
+        h3{
+            text-align:center;
+            margin-bottom:15px;
+            color:#333;
+        }
+        .role-box{
+            display:flex;
+            gap:10px;
+            margin-bottom:15px;
+        }
+        .role-box button{
             flex:1;
             padding:12px;
-            border:none;
-            cursor:pointer;
+            border:1px solid #ddd;
+            border-radius:8px;
             background:#f2f2f2;
+            cursor:pointer;
             font-weight:600;
         }
-        .auth-select button.active
-        {
+        .role-box button.active{
             background:#4CAF50;
             color:white;
+            border:none;
+        }
+        input{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:6px;
+        }
+        button.submit{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            border:none;
+            border-radius:6px;
+            background:#4CAF50;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Flask Frontend</h1>
 
+<div class="card">
+    <h1>Welcome</h1>
     <h3>Student Complaint Form</h3>
-    <h4>
-        enter 1 for student <br>
-        enter 2 for teacher <br>
-        enter 3 for head
-    </h4>
 
-    <!-- FORM REQUIRED -->
     <form action="/submit" method="post">
-        <input type="text" name = "LS_option" placeholder="Enter login yaa Signup" required>
-        <input type="text" name="option" placeholder="Enter option here" required>
-        <button type="submit">Enter</button>
+
+        <!-- Login / Signup -->
+        <input type="text" name="LS_option" placeholder="Login or Signup" required>
+
+        <!-- Hidden field (name NOT changed) -->
+        <input type="hidden" name="option" id="option">
+
+        <!-- New role selector -->
+        <div class="role-box">
+            <button type="button" onclick="setRole('student', this)">Student</button>
+            <button type="button" onclick="setRole('teacher', this)">Teacher</button>
+            <button type="button" onclick="setRole('head', this)">Head</button>
+        </div>
+
+        <button type="submit" class="submit">Continue</button>
     </form>
-    
+</div>
 
-    <!-- <div class="auth-select">
-    <button class="active" onclick="selectAuth(this)">Login</button>
-    <button onclick="selectAuth(this)">Signup</button>
-    </div>
+<script>
+function setRole(role, btn){
+    document.getElementById("option").value = role;
 
-    <script>
-        function selectAuth(btn)
-        {
-            document.querySelectorAll('.auth-select button')
-                .forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-    </script> -->
+    // active UI
+    document.querySelectorAll(".role-box button")
+      .forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+}
+</script>
+
 </body>
 </html>
