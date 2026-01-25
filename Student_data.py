@@ -1,4 +1,5 @@
 from supabase import create_client
+import httpx
 
 def INSERT_STUDENT_DATA_IN_SUPABASE(data):
     url = "https://koabmxqfnuejulwbscng.supabase.co"
