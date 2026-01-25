@@ -56,6 +56,7 @@
 from flask import Flask, request, send_file, redirect, url_for
 import calculate_cmpl as cal
 import Find_User as find_user
+import Sign_Up as sign_up
 
 app = Flask(__name__)
 
@@ -85,7 +86,7 @@ def submit():
         # check user found or not
         # find_user.FIND_HEAD_IN_SUPABASE(option)
         # aagad kaam chalu che 
-        pass 
+        sign_up.run_signup_app()
 
 
 
