@@ -56,7 +56,7 @@
 from flask import Flask, request, send_file, redirect, url_for
 import calculate_cmpl as cal
 import Find_User as find_user
-import Sign_Up as sign_up
+
 
 app = Flask(__name__)
 
@@ -85,10 +85,8 @@ def submit():
     elif ls_option == 'signup':
         # check user found or not
         # find_user.FIND_HEAD_IN_SUPABASE(option)
-        # aagad kaam chalu che 
-        sign_up.run_signup_app()
-
-
+        # aagad kaam chalu che
+        return send_file('Sign_Up.html')
 
 
 
@@ -104,8 +102,10 @@ def student_submit():
 
     # email_module.send_email_using_smtplib(email)
 
-    print("-------student data-------")
-    print(roll_no, enrollment_no, name, email, phone, password)
+    # print("-------student data-------")
+    # print(roll_no, enrollment_no, name, email, phone, password)
+
+    cal.INSERT_STUDENT(roll_no, enrollment_no, name, email, phone, password)
 
     return redirect(url_for('home'))
 
@@ -119,8 +119,12 @@ def teacher_submit():
     Phone_no = request.form.get('Phone_no')
     email = request.form.get('Email_Id')
     password = request.form.get('password')
-    print("-------teacher data-------")
-    print(Teacher_id, Name, Phone_no, email, password)
+
+
+    # print("-------teacher data-------")
+    # print(Teacher_id, Name, Phone_no, email, password)
+
+    cal.INSERT_TEACHER(Teacher_id, Name, Phone_no, email, password)
 
     return redirect(url_for('home'))
 
@@ -135,10 +139,61 @@ def head_submit():
     email = request.form.get('Email_Id')
     password = request.form.get('password')
 
-    print("-------head data-------")
-    print(Head_id, Name, Phone_no, email, password)
+    # print("-------head data-------")
+    # print(Head_id, Name, Phone_no, email, password)
 
+    cal.INSERT_HEAD(Head_id, Name, Phone_no, email, password)
+    
     return redirect(url_for('home'))
+
+
+
+
+
+# ---------------- Sign Up ----------------
+
+
+
+@app.route("/signup", methods=["POST"])
+def signup():
+    send_file("Sign_Up.html")
+    role = request.form.get("role")
+    method = request.form.get("method")
+
+    print("Role:", role)
+    print("Method:", method)
+
+    if role == "student":
+        password = request.form.get("password")
+        if method == "phone":
+            phone = request.form.get("phone")
+            print(phone , password)
+        elif method == "email":
+            email = request.form.get("email")
+            print(email , password)
+        
+
+    elif role == "teacher":
+        password = request.form.get("password")
+        if method == "phone":
+            phone = request.form.get("phone")
+            print(phone , password)
+        elif method == "email":
+            email = request.form.get("email")
+            print(email , password)
+    elif role == "head":
+        password = request.form.get("password")
+        if method == "phone":
+            phone = request.form.get("phone")
+            print(phone , password)
+        elif method == "email":
+            email = request.form.get("email")
+            print(email , password)
+    else:
+        return "Unknown role"
+    return "Data received successfully"
+
+
 
 
 

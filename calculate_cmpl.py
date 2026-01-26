@@ -11,19 +11,19 @@ def SEND_MAIL(mail):
 
 
 # --------------------STUDENT inseert & mail sending--------------------
-def INSERT_STUDENT(data):
-    student_module.INSERT_STUDENT_DATA_IN_SUPABASE(data)
-    SEND_MAIL(data)
+def INSERT_STUDENT(Roll_no, Enrollment_No, Name, Email_Id, Phone_no, Password):
+    student_module.INSERT_STUDENT_DATA_IN_SUPABASE(Roll_no, Enrollment_No, Name, Email_Id, Phone_no, Password)
+    SEND_MAIL(Email_Id)
 
 
 
 #------------------------TEACHER insert & mail sending--------------------
-def INSERT_TEACHER(data):
-    teacher_module.INSERT_TEACHER_DATA_IN_SUPABASE(data)
-    SEND_MAIL(data)
+def INSERT_TEACHER(Teacher_id, Name, Phone_no, Email_Id, Password):
+    teacher_module.INSERT_TEACHER_DATA_IN_SUPABASE(Teacher_id, Name, Phone_no, Email_Id, Password)
+    SEND_MAIL(Email_Id)
 
 
 # ------------------------HEAD insert & mail sending--------------------
-def INSERT_HEAD(data):
-    head_module.INSERT_HEAD_DATA_IN_SUPABASE(data)
-    SEND_MAIL(data)
+def INSERT_HEAD(Head_id, Name, Phone_no, Email_Id, Password):
+    head_module.INSERT_HEAD_DATA_IN_SUPABASE(Head_id, Name, Phone_no, Email_Id, Password)
+    SEND_MAIL(Email_Id)

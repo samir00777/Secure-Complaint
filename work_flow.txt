@@ -65,3 +65,11 @@ def submit():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+add a value on git hub
+git status
+git add .
+git commit -m "update"
+git push

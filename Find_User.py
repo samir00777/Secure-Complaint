@@ -12,5 +12,3 @@ def FIND_HEAD_IN_SUPABASE(id):
         print("No data found for Head_Id ")
     else:
         print("User found", res.data)
-
-    
