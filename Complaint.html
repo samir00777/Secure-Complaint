@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complaint Form</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+    }
+    .container {
+        width: 420px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    label {
+        margin-top: 10px;
+        display: block;
+    }
+    input, select, textarea, button {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+    }
+    button {
+        margin-top: 15px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+
+<script>
+function showFields() {
+    let role = document.getElementById("role").value;
+
+    document.getElementById("studentField").style.display = "none";
+    document.getElementById("teacherField").style.display = "none";
+    document.getElementById("headField").style.display = "none";
+
+    if (role === "student") {
+        document.getElementById("studentField").style.display = "block";
+    } 
+    else if (role === "teacher") {
+        document.getElementById("teacherField").style.display = "block";
+    } 
+    else if (role === "head") {
+        document.getElementById("headField").style.display = "block";
+    }
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+<h2>Complaint Form</h2>
+
+<form>
+
+<!-- MY DETAILS -->
+<label>My Role</label>
+<select id="role" onchange="showFields()" required>
+    <option value="">-- Select --</option>
+    <option value="student">Student</option>
+    <option value="teacher">Teacher</option>
+    <option value="head">Head</option>
+</select>
+
+<label>My Name</label>
+<input type="text" required>
+
+<label>My Email / Mobile</label>
+<input type="text" required>
+
+<!-- ROLE BASED DETAILS -->
+<div id="studentField" style="display:none;">
+    <label>Roll Number</label>
+    <input type="text">
+</div>
+
+<div id="teacherField" style="display:none;">
+    <label>Subject</label>
+    <input type="text">
+</div>
+
+<div id="headField" style="display:none;">
+    <label>Department</label>
+    <input type="text">
+</div>
+
+<hr>
+
+<!-- FROM WHOM -->
+<label>Complaint Against (From Whom)</label>
+<select required>
+    <option value="">-- Select --</option>
+    <option>Student</option>
+    <option>Teacher</option>
+    <option>Head</option>
+    <option>Other</option>
+</select>
+
+<label>Person Name (Optional)</label>
+<input type="text">
+
+<label>Person ID (Optional)</label>
+<input type="text">
+
+<!-- COMPLAINT -->
+<label>Complaint Details</label>
+<textarea rows="4" required></textarea>
+
+<button type="submit">Submit Complaint</button>
+
+</form>
+</div>
+</body>
+</html>

@@ -2,94 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
   <style>
     body {
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #f2f2f2;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
+
     .box {
       background: #fff;
       padding: 20px;
       width: 320px;
       border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
     input, select, button {
       width: 100%;
-      padding: 8px;
-      margin: 6px 0;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
+
     button {
       background: #2563eb;
       color: white;
       border: none;
       cursor: pointer;
+      font-weight: bold;
     }
-    .hidden { display: none; }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-<form method="POST" action="/signup">
+  <form method="POST" action="/signup">
+    <div class="box">
+      <h2>Signup</h2>
 
-<div class="box">
-  <h2>Signup</h2>
+      <select name="role" id="role" onchange="roleSelected()" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="head">Head</option>
+      </select>
 
-  <!-- STEP 1: Role -->
-  <select name="role" id="role" onchange="roleSelected()">
-    <option value="">Select Role</option>
-    <option value="student">Student</option>
-    <option value="teacher">Teacher</option>
-    <option value="head">Head</option>
-  </select>
+      <div id="method" class="hidden">
+        <select name="method" onchange="methodSelected(this.value)" required>
+          <option value="" disabled selected>Signup Using</option>
+          <option value="phone">Phone Number</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
 
-  <!-- STEP 2: Signup Method -->
-  <div id="method" class="hidden">
-    <select name="method" onchange="methodSelected(this.value)">
-      <option value="">Signup Using</option>
-      <option value="phone">Phone Number</option>
-      <option value="email">Email</option>
-    </select>
-  </div>
+      <div id="phoneBox" class="hidden">
+        <input type="text" name="phone" placeholder="Phone Number">
+        <input type="password" name="password" placeholder="Password">
+      </div>
 
-  <!-- STEP 3A: Phone -->
-  <div id="phoneBox" class="hidden">
-    <input type="text" name="phone" placeholder="Phone Number">
-    <input type="password" name="password" placeholder="Password">
-  </div>
+      <div id="emailBox" class="hidden">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+      </div>
 
-  <!-- STEP 3B: Email -->
-  <div id="emailBox" class="hidden">
-    <input type="email" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-  </div>
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
 
-  <button type="submit">Sign Up</button>
-</div>
+  <script>
+    function roleSelected() {
+      document.getElementById("method").classList.remove("hidden");
+    }
 
-</form>
+    function methodSelected(v) {
+      document.getElementById("phoneBox").classList.add("hidden");
+      document.getElementById("emailBox").classList.add("hidden");
 
-<script>
-function roleSelected() {
-  document.getElementById("method").classList.remove("hidden");
-}
-
-function methodSelected(value) {
-  document.getElementById("phoneBox").classList.add("hidden");
-  document.getElementById("emailBox").classList.add("hidden");
-
-  if (value === "phone") {
-    document.getElementById("phoneBox").classList.remove("hidden");
-  }
-  if (value === "email") {
-    document.getElementById("emailBox").classList.remove("hidden");
-  }
-}
-</script>
+      if (v === "phone") {
+        document.getElementById("phoneBox").classList.remove("hidden");
+      } else if (v === "email") {
+        document.getElementById("emailBox").classList.remove("hidden");
+      }
+    }
+  </script>
 
 </body>
 </html>

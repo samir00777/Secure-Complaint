@@ -50,9 +50,10 @@
     # app.run(debug=True)
 
 
-
+# -----------------------------------------------------------------------------------------------------------------------------------------------------************************************************************************************
 
 # 'http://127.0.0.1:5000/'
+from random import random
 from flask import Flask, request, send_file, redirect, url_for
 import calculate_cmpl as cal
 import Find_User as find_user
@@ -91,7 +92,7 @@ def submit():
 
 
 
-@app.route("/student_submit", methods=['POST'])
+# @app.route("/student_submit", methods=['POST'])
 def student_submit():
     roll_no = request.form.get('Roll_No')
     enrollment_no = request.form.get('Enrollment_No')
@@ -100,10 +101,9 @@ def student_submit():
     phone = request.form.get('Phone_no')
     password = request.form.get('password')
 
-    # email_module.send_email_using_smtplib(email)
 
-    # print("-------student data-------")
-    # print(roll_no, enrollment_no, name, email, phone, password)
+    print("-------student data-------")
+    print(roll_no, enrollment_no, name, email, phone, password)
 
     cal.INSERT_STUDENT(roll_no, enrollment_no, name, email, phone, password)
 
@@ -121,8 +121,8 @@ def teacher_submit():
     password = request.form.get('password')
 
 
-    # print("-------teacher data-------")
-    # print(Teacher_id, Name, Phone_no, email, password)
+    print("-------teacher data-------")
+    print(Teacher_id, Name, Phone_no, email, password)
 
     cal.INSERT_TEACHER(Teacher_id, Name, Phone_no, email, password)
 
@@ -143,7 +143,7 @@ def head_submit():
     # print(Head_id, Name, Phone_no, email, password)
 
     cal.INSERT_HEAD(Head_id, Name, Phone_no, email, password)
-    
+
     return redirect(url_for('home'))
 
 
@@ -151,51 +151,104 @@ def head_submit():
 
 
 # ---------------- Sign Up ----------------
-
-
-
 @app.route("/signup", methods=["POST"])
 def signup():
     send_file("Sign_Up.html")
     role = request.form.get("role")
     method = request.form.get("method")
 
+    
+    otp = 0
+    email = ""
+
     print("Role:", role)
     print("Method:", method)
 
     if role == "student":
         password = request.form.get("password")
+
         if method == "phone":
             phone = request.form.get("phone")
             print(phone , password)
+
+
         elif method == "email":
             email = request.form.get("email")
             print(email , password)
+            return send_file("Otp_Frount_End.html")
         
 
     elif role == "teacher":
         password = request.form.get("password")
+
         if method == "phone":
             phone = request.form.get("phone")
             print(phone , password)
+
+
         elif method == "email":
             email = request.form.get("email")
             print(email , password)
+            return send_file("Otp_Frount_End.html")
+        
+
     elif role == "head":
         password = request.form.get("password")
+
         if method == "phone":
             phone = request.form.get("phone")
             print(phone , password)
+
+
         elif method == "email":
             email = request.form.get("email")
             print(email , password)
-    else:
-        return "Unknown role"
+            return send_file("Otp_Frount_End.html")
+            
     return "Data received successfully"
 
 
+    
 
+
+app.route("/otp", methods=["POST"])
+def otp_verification(email):
+    print("OTP verification for email:", email)
+    email = request.form.get("email")
+    recived_otp = request.form.get("otp")
+    send_otp = random.randint(100000, 999999)
+    print("Received OTP:", recived_otp)
+    print("Sent OTP:", send_otp)
+    # cal.SEND_MAIL(email)
+
+    if recived_otp == send_otp:
+        return "OTP verified successfully"
+    else:
+        return "OTP verification failed"
+    
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------ new code -------------------------------------------------
+

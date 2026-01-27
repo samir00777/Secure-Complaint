@@ -17,5 +17,4 @@ def send_email_using_smtplib(email):
     return "Email sent successfully"
 
 
-# while True:
-#     print(send_email_using_smtplib("samirsx38@gmail.com"))
+# print(send_email_using_smtplib("dakshra0906@gmail.com"))
