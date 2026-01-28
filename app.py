@@ -53,10 +53,19 @@
 # -----------------------------------------------------------------------------------------------------------------------------------------------------************************************************************************************
 
 # 'http://127.0.0.1:5000/'
-from random import random
+import email
+import random
 from flask import Flask, request, send_file, redirect, url_for
-import calculate_cmpl as cal
 import Find_User as find_user
+import Emaillll as email_module
+import Student_data as student_module
+import Teacher_Data as teacher_module
+import Head_Data as head_module
+
+
+
+email_for_otp = ""
+otp_generated = 0
 
 
 app = Flask(__name__)
@@ -83,7 +92,7 @@ def submit():
             return send_file('Front_End_For_Student.html')
         else:
             return redirect(url_for('home'))
-    elif ls_option == 'signup':
+    elif ls_option == 'signup': 
         # check user found or not
         # find_user.FIND_HEAD_IN_SUPABASE(option)
         # aagad kaam chalu che
@@ -92,7 +101,7 @@ def submit():
 
 
 
-# @app.route("/student_submit", methods=['POST'])
+@app.route("/student_submit", methods=['POST'])
 def student_submit():
     roll_no = request.form.get('Roll_No')
     enrollment_no = request.form.get('Enrollment_No')
@@ -105,7 +114,7 @@ def student_submit():
     print("-------student data-------")
     print(roll_no, enrollment_no, name, email, phone, password)
 
-    cal.INSERT_STUDENT(roll_no, enrollment_no, name, email, phone, password)
+    student_module.INSERT_STUDENT_DATA_IN_SUPABASE(roll_no, enrollment_no, name, email, phone, password)
 
     return redirect(url_for('home'))
 
@@ -124,7 +133,7 @@ def teacher_submit():
     print("-------teacher data-------")
     print(Teacher_id, Name, Phone_no, email, password)
 
-    cal.INSERT_TEACHER(Teacher_id, Name, Phone_no, email, password)
+    teacher_module.INSERT_TEACHER_DATA_IN_SUPABASE(Teacher_id, Name, Phone_no, email, password)
 
     return redirect(url_for('home'))
 
@@ -142,7 +151,7 @@ def head_submit():
     # print("-------head data-------")
     # print(Head_id, Name, Phone_no, email, password)
 
-    cal.INSERT_HEAD(Head_id, Name, Phone_no, email, password)
+    head_module.INSERT_HEAD_DATA_IN_SUPABASE(Head_id, Name, Phone_no, email, password)
 
     return redirect(url_for('home'))
 
@@ -153,19 +162,24 @@ def head_submit():
 # ---------------- Sign Up ----------------
 @app.route("/signup", methods=["POST"])
 def signup():
-    send_file("Sign_Up.html")
+
+    global email_for_otp
+    global otp_generated
     role = request.form.get("role")
     method = request.form.get("method")
+    otp_generated = random.randint(100000, 999999)
 
     
-    otp = 0
-    email = ""
-
     print("Role:", role)
     print("Method:", method)
 
+    # return send_file("Otp_Frount_End.html")
+
     if role == "student":
         password = request.form.get("password")
+        
+        
+    
 
         if method == "phone":
             phone = request.form.get("phone")
@@ -173,8 +187,9 @@ def signup():
 
 
         elif method == "email":
-            email = request.form.get("email")
-            print(email , password)
+            email_for_otp = request.form.get("email")
+            print(email_for_otp , password)
+            email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
         
 
@@ -187,8 +202,9 @@ def signup():
 
 
         elif method == "email":
-            email = request.form.get("email")
-            print(email , password)
+            email_for_otp = request.form.get("email")
+            print(email_for_otp , password)
+            email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
         
 
@@ -201,8 +217,9 @@ def signup():
 
 
         elif method == "email":
-            email = request.form.get("email")
-            print(email , password)
+            email_for_otp = request.form.get("email")
+            print(email_for_otp , password)
+            email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
             
     return "Data received successfully"
@@ -211,23 +228,25 @@ def signup():
     
 
 
-app.route("/otp", methods=["POST"])
-def otp_verification(email):
-    print("OTP verification for email:", email)
-    email = request.form.get("email")
-    recived_otp = request.form.get("otp")
-    send_otp = random.randint(100000, 999999)
-    print("Received OTP:", recived_otp)
-    print("Sent OTP:", send_otp)
-    # cal.SEND_MAIL(email)
 
-    if recived_otp == send_otp:
-        return "OTP verified successfully"
+@app.route("/signup_otp", methods=["POST"])
+def otp_verification():
+
+    print("-------OTP Verification-------")
+    global email_for_otp
+    global otp_generated
+    received_otp = request.form.get("otp")
+
+    print("Email:", email_for_otp)
+    print("Received OTP:", received_otp)
+
+
+
+    if str(received_otp) == str(otp_generated):
+        return ("OTP verified successfully")
     else:
-        return "OTP verification failed"
+        return ("Invalid OTP. Please try again.")
     
-
-
 if __name__ == "__main__":
     app.run(debug=True)
 

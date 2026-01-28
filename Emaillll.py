@@ -1,20 +1,33 @@
 import smtplib
 
-def send_email_using_smtplib(email):
 
+def send_email_using_smtplib(email, new_otp):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
-    server.login("karavadarasamir92@gmail.com", "pfni yacj uvmb jqya")
+    server.login(
+        "karavadarasamir92@gmail.com",
+        "pfni yacj uvmb jqya"
+    )
+
+    message = f"""Subject: OTP Verification
+
+Hello,
+Thank you for signing up.
+
+Your One-Time Password (OTP) is:
+OTP: {new_otp}
+
+Do not share this OTP with anyone.
+
+Regards,
+Your App Team
+"""
 
     server.sendmail(
         "karavadarasamir92@gmail.com",
-        f"{email}",  # samirsx38@gmail.com
-        '''Subject: Test Mail\n\nEmail sent using Python 
-            hello i am samir i talking about hardwork '''
+        email,
+        message
     )
 
     server.quit()
-    return "Email sent successfully"
-
-
-# print(send_email_using_smtplib("dakshra0906@gmail.com"))
+    print("Email sent successfully")

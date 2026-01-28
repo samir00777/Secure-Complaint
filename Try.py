@@ -13,8 +13,27 @@
 # import Sign_Up
 # Sign_Up.home()
 
-from Sign_Up import app as aa
+# from Sign_Up import app as aa
 
 
-if __name__ == "__main__":
-    aa.run(debug=True)
+# if __name__ == "__main__":
+#     aa.run(debug=True)
+
+
+x = "hello"
+
+def aa():
+    global x
+    print(x)
+    x = "hi"
+
+def bb():
+    x = "hello world"
+    print(x)
+
+aa()
+bb()
+
+
+import Emaillll as e
+e.send_email_using_smtplib("samirsx38@gmail.com", 123456)
