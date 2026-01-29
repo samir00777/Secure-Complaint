@@ -53,7 +53,6 @@
 # -----------------------------------------------------------------------------------------------------------------------------------------------------************************************************************************************
 
 # 'http://127.0.0.1:5000/'
-import email
 import random
 from flask import Flask, request, send_file, redirect, url_for
 import Find_User as find_user
@@ -176,7 +175,12 @@ def signup():
     # return send_file("Otp_Frount_End.html")
 
     if role == "student":
-        password = request.form.get("password")
+        received_password = request.form.get("password")
+        find_password = find_user.FIND_STUDENT_IN_SUPABASE(role, method, request.form)
+        print("Received Password:", received_password)
+        print("find Password:", find_password)
+
+
         
         
     
@@ -239,6 +243,8 @@ def otp_verification():
 
     print("Email:", email_for_otp)
     print("Received OTP:", received_otp)
+
+    
 
 
 
