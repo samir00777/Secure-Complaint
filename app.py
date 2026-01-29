@@ -176,7 +176,7 @@ def signup():
 
     if role == "student":
         received_password = request.form.get("password")
-        find_password = find_user.FIND_STUDENT_IN_SUPABASE(role, method, request.form)
+        find_password = find_user.FIND_STUDENT_IN_SUPABASE(role, method)
         print("Received Password:", received_password)
         print("find Password:", find_password)
 
@@ -185,44 +185,57 @@ def signup():
         
     
 
-        if method == "phone":
+        if method == "phone" and received_password == find_password:
             phone = request.form.get("phone")
-            print(phone , password)
+            print(phone , received_password)
 
 
-        elif method == "email":
+        elif method == "email" and received_password == find_password:
             email_for_otp = request.form.get("email")
-            print(email_for_otp , password)
+            print(email_for_otp , received_password)
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
         
 
     elif role == "teacher":
-        password = request.form.get("password")
 
-        if method == "phone":
+
+        received_password = request.form.get("password")
+        find_password = find_user.FIND_TEACHER_IN_SUPABASE(role, method)
+        print("Received Password:", received_password)
+        print("find Password:", find_password)
+
+
+
+        if method == "phone" and received_password == find_password:
             phone = request.form.get("phone")
-            print(phone , password)
+            print(phone , received_password)
 
 
-        elif method == "email":
+        elif method == "email" and received_password == find_password:
             email_for_otp = request.form.get("email")
-            print(email_for_otp , password)
+            print(email_for_otp , received_password)
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
         
 
     elif role == "head":
-        password = request.form.get("password")
 
-        if method == "phone":
+
+        received_password = request.form.get("password")
+        find_password = find_user.FIND_HEAD_IN_SUPABASE(role, method)
+        print("Received Password:", received_password)
+        print("find Password:", find_password)
+
+
+        if method == "phone" and received_password == find_password:
             phone = request.form.get("phone")
-            print(phone , password)
+            print(phone , received_password)
 
 
-        elif method == "email":
+        elif method == "email" and received_password == find_password:
             email_for_otp = request.form.get("email")
-            print(email_for_otp , password)
+            print(email_for_otp , received_password)
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
             return send_file("Otp_Frount_End.html")
             
