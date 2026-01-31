@@ -178,21 +178,34 @@ def signup():
 
     # return send_file("Otp_Frount_End.html")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     if role == "student":
-        
 
-
-        
-        
-    
 
         if method == "phone":
 
-            phone = request.form.get("phone")
+            phone = int(request.form.get("phone"))
 
+            received_password = request.form.get("password_for_phone")
 
-            received_password = request.form.get("password")
-            find_password = find_user.FIND_STUDENT_IN_SUPABASE("Phone_No" , phone)
+            find_password = find_user.FIND_STUDENT_IN_SUPABASE("Phone_no" , phone)
             print("Received Password:", received_password)
             print("find Password:", find_password)
 
@@ -205,49 +218,64 @@ def signup():
             else:
                 return "Incorrect Password"
 
-
-            
-
-
         elif method == "email":
-            email_for_otp = request.form.get("email")
 
+
+            email_for_otp = request.form.get("email")
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
 
 
-            received_password = request.form.get("password")
+            received_password = request.form.get("password_for_email")
             find_password = find_user.FIND_STUDENT_IN_SUPABASE("Email_Id" , email_for_otp)
 
 
             print("Received Password:", received_password)
             print("find Password:", find_password)
+            print("email_for_otp:", email_for_otp)
 
 
-            if received_password == find_password:
-                return send_file("Otp_Frount_End.html")
-            
-            elif received_password is None:
+            if find_password is None:
                 return "User not found"
-            
+            elif received_password == find_password:
+                return "Login Successful"
             else:
                 return "Incorrect Password"
+
         
 
 
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     elif role == "teacher":
 
-
-        
-
-
-
         if method == "phone":
-            phone = request.form.get("phone")
+            phone = int(request.form.get("phone"))
 
-            received_password = request.form.get("password")
-            find_password = find_user.FIND_TEACHER_IN_SUPABASE("Phone_No" , phone)
+            received_password = request.form.get("password_for_phone")
+            find_password = find_user.FIND_TEACHER_IN_SUPABASE("Phone_no" , phone)
             print("Received Password:", received_password)
             print("find Password:", find_password)
 
@@ -266,7 +294,7 @@ def signup():
 
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
 
-            received_password = request.form.get("password")
+            received_password = request.form.get("password_for_email")
             find_password = find_user.FIND_TEACHER_IN_SUPABASE("Email_Id" , email_for_otp)
 
             print("Received Password:", received_password)
@@ -285,6 +313,38 @@ def signup():
             
         
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     elif role == "head":
 
 
@@ -294,11 +354,11 @@ def signup():
         if method == "phone":
 
 
-            phone = request.form.get("phone")
+            phone = int(request.form.get("phone"))
 
 
-            received_password = request.form.get("password")
-            find_password = find_user.FIND_HEAD_IN_SUPABASE("Phone_No" , phone)
+            received_password = request.form.get("password_for_phone")
+            find_password = find_user.FIND_HEAD_IN_SUPABASE("Phone_no" , phone)
             print("Received Password:", received_password)
             print("find Password:", find_password)
 
@@ -317,9 +377,9 @@ def signup():
 
             email_module.send_email_using_smtplib(email_for_otp, otp_generated)
 
-            received_password = request.form.get("password")
+            received_password = request.form.get("password_for_email")
             find_password = find_user.FIND_HEAD_IN_SUPABASE("Email_Id" , email_for_otp)
-            
+
             print("Received Password:", received_password)
             print("find Password:", find_password)
 
