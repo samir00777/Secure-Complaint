@@ -1,129 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Complaint Form</title>
+<html lang="gu">
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f6f8;
-    }
-    .container {
-        width: 420px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-        text-align: center;
-    }
-    label {
-        margin-top: 10px;
-        display: block;
-    }
-    input, select, textarea, button {
-        width: 100%;
-        padding: 8px;
-        margin-top: 5px;
-    }
-    button {
-        margin-top: 15px;
-        background: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    button:hover {
-        background: #0056b3;
-    }
-</style>
+	<head>
+		<meta charset="UTF-8">
+		<title>Complaint Form</title>
 
-<script>
-function showFields() {
-    let role = document.getElementById("role").value;
+		<style>
+			body 
+            {
+				font-family: Arial;
+				padding: 20px;
+			}
 
-    document.getElementById("studentField").style.display = "none";
-    document.getElementById("teacherField").style.display = "none";
-    document.getElementById("headField").style.display = "none";
+			fieldset 
+            {
+				margin-bottom: 20px;
+			}
 
-    if (role === "student") {
-        document.getElementById("studentField").style.display = "block";
-    } 
-    else if (role === "teacher") {
-        document.getElementById("teacherField").style.display = "block";
-    } 
-    else if (role === "head") {
-        document.getElementById("headField").style.display = "block";
-    }
-}
-</script>
-</head>
+			label 
+            {
+				display: block;
+				margin-top: 10px;
+			}
 
-<body>
-<div class="container">
-<h2>Complaint Form</h2>
+			input,
+			select,
+			textarea 
+            {
+				width: 100%;
+				padding: 6px;
+			}
+		</style>
 
-<form>
+		<script>
+			function myRoleChange() 
+            {
+				document.getElementById("student").style.display = "none";
+				document.getElementById("teacher").style.display = "none";
+				document.getElementById("head").style.display = "none";
+				document.getElementById(role.value).style.display = "block";
+			}
 
-<!-- MY DETAILS -->
-<label>My Role</label>
-<select id="role" onchange="showFields()" required>
-    <option value="">-- Select --</option>
-    <option value="student">Student</option>
-    <option value="teacher">Teacher</option>
-    <option value="head">Head</option>
-</select>
+			function againstRoleChange()
+            {
+				document.getElementById("astudent").style.display = "none";
+				document.getElementById("ateacher").style.display = "none";
+				document.getElementById("ahead").style.display = "none";
+				document.getElementById("a" + against.value).style.display = "block";
+			}
+		</script>
+	</head>
 
-<label>My Name</label>
-<input type="text" required>
+	<body>
 
-<label>My Email / Mobile</label>
-<input type="text" required>
+		<h2>Complaint Raise Form</h2>
 
-<!-- ROLE BASED DETAILS -->
-<div id="studentField" style="display:none;">
-    <label>Roll Number</label>
-    <input type="text">
-</div>
+		<fieldset>
+			<legend>My Role</legend>
 
-<div id="teacherField" style="display:none;">
-    <label>Subject</label>
-    <input type="text">
-</div>
+			<select id="role" onchange="myRoleChange()">
+				<option value="">Select</option>
+				<option value="student">Student</option>
+				<option value="teacher">Teacher</option>
+				<option value="head">Head</option>
+			</select>
 
-<div id="headField" style="display:none;">
-    <label>Department</label>
-    <input type="text">
-</div>
+			<div id="student" style="display:none">
+				<label>Name</label>
+				<input>
 
-<hr>
+				<label>Phone / Email</label>
+				<input>
 
-<!-- FROM WHOM -->
-<label>Complaint Against (From Whom)</label>
-<select required>
-    <option value="">-- Select --</option>
-    <option>Student</option>
-    <option>Teacher</option>
-    <option>Head</option>
-    <option>Other</option>
-</select>
+				<label>Roll No</label>
+				<input>
+			</div>
 
-<label>Person Name (Optional)</label>
-<input type="text">
+			<div id="teacher" style="display:none">
+				<label>Name</label>
+				<input>
 
-<label>Person ID (Optional)</label>
-<input type="text">
+				<label>Phone / Email</label>
+				<input>
 
-<!-- COMPLAINT -->
-<label>Complaint Details</label>
-<textarea rows="4" required></textarea>
+				<label>Teacher ID</label>
+				<input>
+			</div>
 
-<button type="submit">Submit Complaint</button>
+			<div id="head" style="display:none">
+				<label>Name</label>
+				<input>
 
-</form>
-</div>
-</body>
+				<label>Phone / Email</label>
+				<input>
+
+				<label>Head ID</label>
+				<input>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend>Complaint Against</legend>
+
+			<select id="against" onchange="againstRoleChange()">
+				<option value="">Select</option>
+				<option value="student">Student</option>
+				<option value="teacher">Teacher</option>
+				<option value="head">Head</option>
+			</select>
+
+			<div id="astudent" style="display:none">
+				<label>Name</label>
+				<input>
+
+				<label>Roll No</label>
+				<input>
+
+				<label>Complaint</label>
+				<textarea></textarea>
+			</div>
+
+			<div id="ateacher" style="display:none">
+				<label>Name</label>
+				<input>
+
+				<label>Phone / Email</label>
+				<input>
+
+				<label>Complaint</label>
+				<textarea></textarea>
+			</div>
+
+			<div id="ahead" style="display:none">
+				<label>Name</label>
+				<input>
+
+				<label>Phone / Email</label>
+				<input>
+
+				<label>Complaint</label>
+				<textarea></textarea>
+			</div>
+		</fieldset>
+
+		<button>
+			Submit Complaint
+		</button>
+
+	</body>
+
 </html>
