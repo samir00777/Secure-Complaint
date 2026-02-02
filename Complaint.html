@@ -55,10 +55,12 @@
 
 		<h2>Complaint Raise Form</h2>
 
+		<form method="POST" action="/submit_complaint">
+
 		<fieldset>
 			<legend>My Role</legend>
 
-			<select id="role" onchange="myRoleChange()">
+			<select id="role" name="my_role" onchange="myRoleChange()">
 				<option value="">Select</option>
 				<option value="student">Student</option>
 				<option value="teacher">Teacher</option>
@@ -67,42 +69,42 @@
 
 			<div id="student" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="student_name">
 
 				<label>Phone / Email</label>
-				<input>
+				<input name="student_contact">
 
 				<label>Roll No</label>
-				<input>
+				<input name="student_roll">
 			</div>
 
 			<div id="teacher" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="teacher_name">
 
 				<label>Phone / Email</label>
-				<input>
+				<input name="teacher_contact">
 
 				<label>Teacher ID</label>
-				<input>
+				<input name="teacher_id">
 			</div>
 
 			<div id="head" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="head_name">
 
 				<label>Phone / Email</label>
-				<input>
+				<input name="head_contact">
 
 				<label>Head ID</label>
-				<input>
+				<input name="head_id">
 			</div>
 		</fieldset>
 
 		<fieldset>
 			<legend>Complaint Against</legend>
 
-			<select id="against" onchange="againstRoleChange()">
+			<select id="against" name="against_role" onchange="againstRoleChange()">
 				<option value="">Select</option>
 				<option value="student">Student</option>
 				<option value="teacher">Teacher</option>
@@ -111,41 +113,43 @@
 
 			<div id="astudent" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="against_student_name">
 
 				<label>Roll No</label>
-				<input>
+				<input name="against_student_roll">
 
 				<label>Complaint</label>
-				<textarea></textarea>
+				<textarea name="complaint_student"></textarea>
 			</div>
 
 			<div id="ateacher" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="against_teacher_name">
 
 				<label>Phone / Email</label>
-				<input>
+				<input name="against_teacher_contact">
 
 				<label>Complaint</label>
-				<textarea></textarea>
+				<textarea name="complaint_teacher"></textarea>
 			</div>
 
 			<div id="ahead" style="display:none">
 				<label>Name</label>
-				<input>
+				<input name="against_head_name">
 
 				<label>Phone / Email</label>
-				<input>
+				<input name="against_head_contact">
 
 				<label>Complaint</label>
-				<textarea></textarea>
+				<textarea name="complaint_head"></textarea>
 			</div>
 		</fieldset>
 
-		<button>
+		<button type="submit">
 			Submit Complaint
 		</button>
+
+		</form>
 
 	</body>
 
