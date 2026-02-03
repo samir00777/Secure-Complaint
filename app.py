@@ -147,8 +147,8 @@ def head_submit():
     email = request.form.get('Email_Id')
     password = request.form.get('password')
 
-    # print("-------head data-------")
-    # print(Head_id, Name, Phone_no, email, password)
+    print("-------head data-------")
+    print(Head_id, Name, Phone_no, email, password)
 
     head_module.INSERT_HEAD_DATA_IN_SUPABASE(Head_id, Name, Phone_no, email, password)
 
@@ -431,12 +431,6 @@ def otp_verification():
     else:
         return ("Invalid OTP. Please try again.")
     
-    
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
-
 
 
 
@@ -483,3 +477,46 @@ if __name__ == "__main__":
 
 # @app.route("/Complaint", methods=["POST"])
 # def signup():
+
+@app.route("/submit_complaint", methods=["POST"])
+def submit_complaint():
+
+    my_role = request.form.get("my_role")
+    against_role = request.form.get("against_role")
+
+    data = {
+        "my_role": my_role,
+        "against_role": against_role,
+        "student_name": request.form.get("student_name"),
+        "student_contact": request.form.get("student_contact"),
+        "student_roll": request.form.get("student_roll"),
+        "teacher_name": request.form.get("teacher_name"),
+        "teacher_contact": request.form.get("teacher_contact"),
+        "teacher_id": request.form.get("teacher_id"),
+        "head_name": request.form.get("head_name"),
+        "head_contact": request.form.get("head_contact"),
+        "head_id": request.form.get("head_id"),
+        "against_student_name": request.form.get("against_student_name"),
+        "against_student_roll": request.form.get("against_student_roll"),
+        "complaint_student": request.form.get("complaint_student"),
+        "against_teacher_name": request.form.get("against_teacher_name"),
+        "against_teacher_contact": request.form.get("against_teacher_contact"),
+        "complaint_teacher": request.form.get("complaint_teacher"),
+        "against_head_name": request.form.get("against_head_name"),
+        "against_head_contact": request.form.get("against_head_contact"),
+        "complaint_head": request.form.get("complaint_head")
+    }
+
+    print(data)
+
+    return "Complaint Submitted Successfully"
+
+
+
+
+    
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+
