@@ -17,4 +17,4 @@ def INSERT_TEACHER_DATA_IN_SUPABASE(teacher_id, name, phone_no, email_id, passwo
         "Password": password
     }
 
-    supabase.table("Teacher_data").insert(data).execute()
+    supabase.table("Teacher_Data").insert(data).execute()

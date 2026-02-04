@@ -13,8 +13,8 @@ def INSERT_HEAD_DATA_IN_SUPABASE(Head_id, Name, Phone_no, Email, password):
     data = {
         "Head_Id": Head_id,
         "Name": Name,
-        "Phone": Phone_no,
-        "Email": Email,
+        "Email_Id": Email,
+        "Phone_no": Phone_no,
         "Password": password
     }
 

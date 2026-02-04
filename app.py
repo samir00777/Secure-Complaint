@@ -146,7 +146,7 @@ def head_submit():
     Phone_no = request.form.get('Phone_no')
     email = request.form.get('Email_Id')
     password = request.form.get('password')
-
+ 
     print("-------head data-------")
     print(Head_id, Name, Phone_no, email, password)
 
@@ -282,7 +282,7 @@ def signup():
             print("find Password:", find_password)
 
             if received_password == find_password:
-                return send_file("Otp_Frount_End.html")
+                return send_file("complaint.html")
             
             elif received_password is None:
                 return "User not found"
@@ -349,14 +349,11 @@ def signup():
 
     elif role == "head":
 
-
-        
-
-
         if method == "phone":
 
 
             phone = int(request.form.get("phone"))
+            print("Phone:", phone)
 
 
             received_password = request.form.get("password_for_phone")
@@ -365,7 +362,7 @@ def signup():
             print("find Password:", find_password)
 
             if received_password == find_password:
-                return send_file("Otp_Frount_End.html")
+                return send_file("complaint.html")
             
             elif received_password is None:
                 return "User not found"
