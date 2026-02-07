@@ -2,7 +2,7 @@ import re
 
 def check_input(value):
     email_regex = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
-    phone_regex = r'^\d{10}$'  # Indian 10-digit phone
+    phone_regex = r'^\d{10}$'
 
     if re.match(email_regex, value):
         return "Email"
@@ -12,5 +12,5 @@ def check_input(value):
         return "Invalid"
 
 # Examples
-print(check_input("samir@gmail.com"))  # Email
-print(check_input("9876543210"))       # Phone
+print(check_input("samir@gmail.com"))
+print(check_input("9876543210"))
