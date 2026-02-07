@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="gu">
-
 	<head>
 		<meta charset="UTF-8">
 		<title>Complaint Form</title>
 
 		<style>
-			body 
-            {
+			body
+			{
 				font-family: Arial;
 				padding: 20px;
 			}
 
-			fieldset 
-            {
+			fieldset
+			{
 				margin-bottom: 20px;
 			}
 
-			label 
-            {
+			label
+			{
 				display: block;
 				margin-top: 10px;
 			}
 
 			input,
 			select,
-			textarea 
-            {
+			textarea
+			{
 				width: 100%;
 				padding: 6px;
 			}
 		</style>
 
 		<script>
-			function myRoleChange() 
-            {
+			function myRoleChange()
+			{
 				document.getElementById("student").style.display = "none";
 				document.getElementById("teacher").style.display = "none";
 				document.getElementById("head").style.display = "none";
@@ -42,7 +41,7 @@
 			}
 
 			function againstRoleChange()
-            {
+			{
 				document.getElementById("astudent").style.display = "none";
 				document.getElementById("ateacher").style.display = "none";
 				document.getElementById("ahead").style.display = "none";
@@ -57,100 +56,105 @@
 
 		<form method="POST" action="/submit_complaint">
 
-		<fieldset>
-			<legend>My Role</legend>
+			<!-- ================= MY ROLE ================= -->
+			<fieldset>
+				<legend>My Role</legend>
 
-			<select id="role" name="my_role" onchange="myRoleChange()">
-				<option value="">Select</option>
-				<option value="student">Student</option>
-				<option value="teacher">Teacher</option>
-				<option value="head">Head</option>
-			</select>
+				<select id="role" name="my_role" onchange="myRoleChange()">
+					<option value="">Select</option>
+					<option value="student">Student</option>
+					<option value="teacher">Teacher</option>
+					<option value="head">Head</option>
+				</select>
 
-			<div id="student" style="display:none">
-				<label>Name</label>
-				<input name="student_name">
+				<!-- My Student -->
+				<div id="student" style="display:none">
+					<label>Full Name</label>
+					<input name="my_student_full_name">
 
-				<label>Phone / Email</label>
-				<input name="student_contact">
+					<label>Phone / Email</label>
+					<input name="my_student_contact_info">
 
-				<label>Roll No</label>
-				<input name="student_roll">
-			</div>
+					<label>Roll Number</label>
+					<input name="my_student_roll_number">
+				</div>
 
-			<div id="teacher" style="display:none">
-				<label>Name</label>
-				<input name="teacher_name">
+				<!-- My Teacher -->
+				<div id="teacher" style="display:none">
+					<label>Full Name</label>
+					<input name="my_teacher_full_name">
 
-				<label>Phone / Email</label>
-				<input name="teacher_contact">
+					<label>Phone / Email</label>
+					<input name="my_teacher_contact_info">
 
-				<label>Teacher ID</label>
-				<input name="teacher_id">
-			</div>
+					<label>Teacher ID</label>
+					<input name="my_teacher_id">
+				</div>
 
-			<div id="head" style="display:none">
-				<label>Name</label>
-				<input name="head_name">
+				<!-- My Head -->
+				<div id="head" style="display:none">
+					<label>Full Name</label>
+					<input name="my_head_full_name">
 
-				<label>Phone / Email</label>
-				<input name="head_contact">
+					<label>Phone / Email</label>
+					<input name="my_head_contact_info">
 
-				<label>Head ID</label>
-				<input name="head_id">
-			</div>
-		</fieldset>
+					<label>Head ID</label>
+					<input name="my_head_id">
+				</div>
+			</fieldset>
 
-		<fieldset>
-			<legend>Complaint Against</legend>
+			<!-- ================= COMPLAINT AGAINST ================= -->
+			<fieldset>
+				<legend>Complaint Against</legend>
 
-			<select id="against" name="against_role" onchange="againstRoleChange()">
-				<option value="">Select</option>
-				<option value="student">Student</option>
-				<option value="teacher">Teacher</option>
-				<option value="head">Head</option>
-			</select>
+				<select id="against" name="against_role" onchange="againstRoleChange()">
+					<option value="">Select</option>
+					<option value="student">Student</option>
+					<option value="teacher">Teacher</option>
+					<option value="head">Head</option>
+				</select>
 
-			<div id="astudent" style="display:none">
-				<label>Name</label>
-				<input name="against_student_name">
+				<!-- Against Student -->
+				<div id="astudent" style="display:none">
+					<label>Full Name</label>
+					<input name="against_student_full_name">
 
-				<label>Roll No</label>
-				<input name="against_student_roll">
+					<label>Roll Number</label>
+					<input name="against_student_roll_number">
 
-				<label>Complaint</label>
-				<textarea name="complaint_student"></textarea>
-			</div>
+					<label>Complaint</label>
+					<textarea name="against_student_complaint_text"></textarea>
+				</div>
 
-			<div id="ateacher" style="display:none">
-				<label>Name</label>
-				<input name="against_teacher_name">
+				<!-- Against Teacher -->
+				<div id="ateacher" style="display:none">
+					<label>Full Name</label>
+					<input name="against_teacher_full_name">
 
-				<label>Phone / Email</label>
-				<input name="against_teacher_contact">
+					<label>Phone / Email</label>
+					<input name="against_teacher_contact_info">
 
-				<label>Complaint</label>
-				<textarea name="complaint_teacher"></textarea>
-			</div>
+					<label>Complaint</label>
+					<textarea name="against_teacher_complaint_text"></textarea>
+				</div>
 
-			<div id="ahead" style="display:none">
-				<label>Name</label>
-				<input name="against_head_name">
+				<!-- Against Head -->
+				<div id="ahead" style="display:none">
+					<label>Full Name</label>
+					<input name="against_head_full_name">
 
-				<label>Phone / Email</label>
-				<input name="against_head_contact">
+					<label>Phone / Email</label>
+					<input name="against_head_contact_info">
 
-				<label>Complaint</label>
-				<textarea name="complaint_head"></textarea>
-			</div>
-		</fieldset>
+					<label>Complaint</label>
+					<textarea name="against_head_complaint_text"></textarea>
+				</div>
+			</fieldset>
 
-		<button type="submit">
-			Submit Complaint
-		</button>
+			<button type="submit">Submit Complaint</button>
 
 		</form>
 
 	</body>
-
 </html>

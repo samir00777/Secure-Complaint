@@ -478,33 +478,56 @@ def otp_verification():
 @app.route("/submit_complaint", methods=["POST"])
 def submit_complaint():
 
-    my_role = request.form.get("my_role")
-    against_role = request.form.get("against_role")
+    my_role = request.form.get("my_role").lower()
+    against_role = request.form.get("against_role").lower()
 
-    data = {
-        "my_role": my_role,
-        "against_role": against_role,
-        "student_name": request.form.get("student_name"),
-        "student_contact": request.form.get("student_contact"),
-        "student_roll": request.form.get("student_roll"),
-        "teacher_name": request.form.get("teacher_name"),
-        "teacher_contact": request.form.get("teacher_contact"),
-        "teacher_id": request.form.get("teacher_id"),
-        "head_name": request.form.get("head_name"),
-        "head_contact": request.form.get("head_contact"),
-        "head_id": request.form.get("head_id"),
-        "against_student_name": request.form.get("against_student_name"),
-        "against_student_roll": request.form.get("against_student_roll"),
-        "complaint_student": request.form.get("complaint_student"),
-        "against_teacher_name": request.form.get("against_teacher_name"),
-        "against_teacher_contact": request.form.get("against_teacher_contact"),
-        "complaint_teacher": request.form.get("complaint_teacher"),
-        "against_head_name": request.form.get("against_head_name"),
-        "against_head_contact": request.form.get("against_head_contact"),
-        "complaint_head": request.form.get("complaint_head")
-    }
+    # data = {
+    #     "my_role": my_role,
+    #     "against_role": against_role,
+    #     "student_name": request.form.get("student_name"),
+    #     "student_contact": request.form.get("student_contact"),
+    #     "student_roll": request.form.get("student_roll"),
+    #     "teacher_name": request.form.get("teacher_name"),
+    #     "teacher_contact": request.form.get("teacher_contact"),
+    #     "teacher_id": request.form.get("teacher_id"),
+    #     "head_name": request.form.get("head_name"),
+    #     "head_contact": request.form.get("head_contact"),
+    #     "head_id": request.form.get("head_id"),
+    #     "against_student_name": request.form.get("against_student_name"),
+    #     "against_student_roll": request.form.get("against_student_roll"),
+    #     "complaint_student": request.form.get("complaint_student"),
+    #     "against_teacher_name": request.form.get("against_teacher_name"),
+    #     "against_teacher_contact": request.form.get("against_teacher_contact"),
+    #     "complaint_teacher": request.form.get("complaint_teacher"),
+    #     "against_head_name": request.form.get("against_head_name"),
+    #     "against_head_contact": request.form.get("against_head_contact"),
+    #     "complaint_head": request.form.get("complaint_head")
+    # }
 
-    print(data)
+    # print(data)
+
+
+
+    if my_role == "student" and against_role == "student":
+        pass
+    elif my_role == "teacher" and against_role == "student":
+        pass
+    elif my_role == "head" and against_role == "student":
+        pass
+    elif my_role == "student" and against_role == "teacher":
+        pass
+    elif my_role == "teacher" and against_role == "teacher":
+        pass
+    elif my_role == "head" and against_role == "teacher":
+        pass
+    elif my_role == "student" and against_role == "head":
+        pass
+    elif my_role == "teacher" and against_role == "head":
+        pass
+    elif my_role == "head" and against_role == "head":
+        pass
+
+
 
     return "Complaint Submitted Successfully"
 
