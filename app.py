@@ -55,7 +55,7 @@
 # 'http://127.0.0.1:5000/'
 import random
 from flask import Flask, request, send_file, redirect, url_for
-import Find_User as find_user
+import Find_Password_In_Database as find_user
 import Emaillll as email_module
 import Student_data as student_module
 import Teacher_Data as teacher_module
@@ -506,6 +506,42 @@ def submit_complaint():
 
     # print(data)
 
+
+
+    my_data = {}
+    if my_role == "student":
+        my_data["name"] = request.form.get("my_student_full_name")
+        my_data["contact"] = request.form.get("my_student_contact_info")
+        my_data["id"] = request.form.get("my_student_roll_number")
+
+    elif my_role == "teacher":
+        my_data["name"] = request.form.get("my_teacher_full_name")
+        my_data["contact"] = request.form.get("my_teacher_contact_info")
+        my_data["id"] = request.form.get("my_teacher_id")
+
+    elif my_role == "head":
+        my_data["name"] = request.form.get("my_head_full_name")
+        my_data["contact"] = request.form.get("my_head_contact_info")
+        my_data["id"] = request.form.get("my_head_id")
+
+
+
+
+    against_data = {}
+    if against_role == "student":
+        against_data["name"] = request.form.get("against_student_full_name")
+        against_data["id"] = request.form.get("against_student_roll_number")
+        against_data["complaint"] = request.form.get("against_student_complaint_text")
+
+    elif against_role == "teacher":
+        against_data["name"] = request.form.get("against_teacher_full_name")
+        against_data["contact"] = request.form.get("against_teacher_contact_info")
+        against_data["complaint"] = request.form.get("against_teacher_complaint_text")
+
+    elif against_role == "head":
+        against_data["name"] = request.form.get("against_head_full_name")
+        against_data["contact"] = request.form.get("against_head_contact_info")
+        against_data["complaint"] = request.form.get("against_head_complaint_text")
 
 
     if my_role == "student" and against_role == "student":

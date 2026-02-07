@@ -68,6 +68,50 @@ if __name__ == "__main__":
 
 
 
+
+
+
+✅ MY ROLE – exact match
+
+Student
+my_student_full_name
+my_student_contact_info
+my_student_roll_number
+
+Teacher
+my_teacher_full_name
+my_teacher_contact_info
+my_teacher_id
+
+Head
+my_head_full_name
+my_head_contact_info
+my_head_id
+
+
+
+✅ AGAINST ROLE – exact match
+
+Student
+against_student_full_name
+against_student_roll_number
+against_student_complaint_text
+
+Teacher
+against_teacher_full_name
+against_teacher_contact_info
+against_teacher_complaint_text
+
+Head
+against_head_full_name
+against_head_contact_info
+against_head_complaint_text
+
+
+
+
+
+
 add a value on git hub
 git status
 git add .
