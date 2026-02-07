@@ -60,7 +60,8 @@ import Emaillll as email_module
 import Student_data as student_module
 import Teacher_Data as teacher_module
 import Head_Data as head_module
-import PhoneNo_Email as phone_email_module
+import Check_User_For_CMP as check_useing_email
+import Check_User_For_CMP_Using_PhoneNo as check_useing_phone
 
 
 
@@ -525,7 +526,10 @@ def submit_complaint():
         my_data["contact"] = request.form.get("my_head_contact_info")
         my_data["id"] = request.form.get("my_head_id")
 
-    phone_email_module.check_input(my_data["contact"]) 
+    
+
+
+        
 
 
 
@@ -570,7 +574,7 @@ def submit_complaint():
 
 
 
-    return "Complaint Submitted Successfully"
+    return "Complaint raised Successfully"
 
 
 
