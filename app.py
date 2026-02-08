@@ -60,8 +60,7 @@ import Emaillll as email_module
 import Student_data as student_module
 import Teacher_Data as teacher_module
 import Head_Data as head_module
-import Check_User_For_CMP as check_useing_email
-import Check_User_For_CMP_Using_PhoneNo as check_useing_phone
+import Check_User_For_CMP as check_user
 
 
 
@@ -526,14 +525,6 @@ def submit_complaint():
         my_data["contact"] = request.form.get("my_head_contact_info")
         my_data["id"] = request.form.get("my_head_id")
 
-    
-
-
-        
-
-
-
-
     against_data = {}
     if against_role == "student":
         against_data["name"] = request.form.get("against_student_full_name")
@@ -550,7 +541,10 @@ def submit_complaint():
         against_data["contact"] = request.form.get("against_head_contact_info")
         against_data["complaint"] = request.form.get("against_head_complaint_text")
 
-    phone_email_module.check_input(against_data["contact"])
+
+    print(my_data)
+    print(against_data)
+
 
 
     if my_role == "student" and against_role == "student":
