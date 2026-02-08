@@ -541,9 +541,13 @@ def submit_complaint():
         against_data["contact"] = request.form.get("against_head_contact_info")
         against_data["complaint"] = request.form.get("against_head_complaint_text")
 
+    print("my role --> ",my_role)
+    print("against role --> ",against_role)
+    print("my data --> ",my_data)
+    print("against data --> ",against_data)
 
-    print(my_data)
-    print(against_data)
+
+    
 
 
 
