@@ -37,7 +37,7 @@ def check_student(value):
         res = (
             supabase
             .table("Student_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Email_Id", value)
             .execute()
         )
@@ -48,7 +48,7 @@ def check_student(value):
         res = (
             supabase
             .table("Student_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Phone_no", int(value))  
             .execute()
         )
@@ -90,7 +90,7 @@ def check_teacher(value):
         res = (
             supabase
             .table("Teacher_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Email_Id", value)
             .execute()
         )
@@ -101,7 +101,7 @@ def check_teacher(value):
         res = (
             supabase
             .table("Teacher_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Phone_no", int(value))  
             .execute()
         )
@@ -149,7 +149,7 @@ def check_head(value):
         res = (
             supabase
             .table("Head_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Email_Id", value)
             .execute()
         )
@@ -160,7 +160,7 @@ def check_head(value):
         res = (
             supabase
             .table("Head_Data")
-            .select("Password")
+            .select("Email_Id")
             .eq("Phone_no", int(value))  
             .execute()
         )
@@ -173,6 +173,8 @@ def check_head(value):
         return None
 
 
-print("check student ",check_student("samirsx38@gmail.com"))
+print("check student ",check_student("8799673722"))
+print("check teacher ",check_teacher("8799673722"))
+print("check head ",check_head("8799673722"))
 
 # print(check_input("8799673722"))
