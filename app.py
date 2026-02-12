@@ -523,6 +523,8 @@ def submit_complaint():
         print("----------------------->>>>> user find from database ",user_cmp)
 
 
+
+
     elif my_role == "teacher":
 
         my_data["name"] = request.form.get("my_teacher_full_name")
@@ -594,9 +596,15 @@ def submit_complaint():
 
     if my_role == "student" and against_role == "student":
         if user_cmp and user_cmp[0]["Roll_No"] == int(against_data["id"]):
-            print("Student found in database. Complaint can be raised.")
+            # print("Student found in database. Complaint can be raised.")
+            contact_type = check_user.check_input(my_data["contact"])
+            print("Contact type:----->>  ", contact_type)
 
-
+            if contact_type == "email":
+                if user_cmp[0]["Email_Id"] == my_data["contact"]:
+                    # print("Contact information matches. Complaint can be raised.")
+                    # send a email using email module
+                    pass
 
 
     elif my_role == "teacher" and against_role == "student":
@@ -615,6 +623,9 @@ def submit_complaint():
         pass
     elif my_role == "head" and against_role == "head":
         pass
+
+
+
 
 
 

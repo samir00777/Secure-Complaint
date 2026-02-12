@@ -21,6 +21,7 @@ supabase = create_client(url, key)
 #     print("Student found:", res.data)
 #     return res.data
 
+
 def check_input(value):
     if re.fullmatch(r"[0-9]{10}", value):
         return "mobile"

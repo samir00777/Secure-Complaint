@@ -1,13 +1,13 @@
 import smtplib
-
+server = smtplib.SMTP("smtp.gmail.com", 587)
+server.starttls()
+server.login(
+    "karavadarasamir92@gmail.com",
+    "pfni yacj uvmb jqya"
+)
 
 def send_email_using_smtplib(email, new_otp):
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(
-        "karavadarasamir92@gmail.com",
-        "pfni yacj uvmb jqya"
-    )
+    
 
     message = f"""Subject: OTP Verification
 
@@ -31,3 +31,21 @@ Your App Team
 
     server.quit()
     print("Email sent successfully")
+
+
+
+def send_complaint_email(email, complaint_details , name , mobile):
+    message = f'''Dear Sir/Madam,
+
+I would like to raise a complaint regarding 
+
+**{complaint_details}**.
+
+Sender Details:
+Name: {name}
+Email: {email}
+Mobile: {mobile}
+
+Thank you.
+
+'''
