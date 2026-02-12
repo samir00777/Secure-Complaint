@@ -20,20 +20,27 @@
 #     aa.run(debug=True)
 
 
-x = "hello"
+# x = "hello"
 
-def aa():
-    global x
-    print(x)
-    x = "hi"
+# def aa():
+#     global x
+#     print(x)
+#     x = "hi"
 
-def bb():
-    x = "hello world"
-    print(x)
+# def bb():
+#     x = "hello world"
+#     print(x)
 
-aa()
-bb()
+# aa()
+# bb()
 
 
-import Emaillll as e
-e.send_email_using_smtplib("samirsx38@gmail.com", 123456)
+# import Emaillll as e
+# e.send_email_using_smtplib("samirsx38@gmail.com", 123456)
+
+
+
+if True:
+    x = "hello"
+
+print(x)

@@ -31,34 +31,34 @@ def check_input(value):
 
 
 def check_student(value):
-    input_type = check_input(value)
+    # input_type = check_input(value)
 
-    if input_type == "email":
-        res = (
-            supabase
-            .table("Student_Data")
-            .select("Email_Id")
-            .eq("Email_Id", value)
-            .execute()
-        )
-        print("Student found by email:", res.data)
-        return res.data
+    # if input_type == "email":
+    res = (
+        supabase
+        .table("Student_Data")
+        .select("*")
+        .eq("Roll_No", value)
+        .execute()
+    )
+        # print("Student found by email:", res.data)
+    return res.data
 
-    elif input_type == "mobile":
-        res = (
-            supabase
-            .table("Student_Data")
-            .select("Email_Id")
-            .eq("Phone_no", int(value))  
-            .execute()
-        )
+    # elif input_type == "mobile":
+    #     res = (
+    #         supabase
+    #         .table("Student_Data")
+    #         .select("*")
+    #         .eq("Roll_No", int(value))  
+    #         .execute()
+    #     )
         
-        print("Student found by roll no:", res.data)
-        return res.data
+    #     # print("Student found by phone no:", res.data)
+    #     return res.data
 
-    else:
-        print("Invalid input")
-        return None
+    # else:
+    #     print("Invalid input")
+    #     return None
 
 
 
@@ -90,23 +90,23 @@ def check_teacher(value):
         res = (
             supabase
             .table("Teacher_Data")
-            .select("Email_Id")
+            .select("*")
             .eq("Email_Id", value)
             .execute()
         )
-        print("teacher found by email:", res.data)
+        # print("teacher found by email:", res.data)
         return res.data
 
     elif input_type == "mobile":
         res = (
             supabase
             .table("Teacher_Data")
-            .select("Email_Id")
+            .select("*")
             .eq("Phone_no", int(value))  
             .execute()
         )
         
-        print("teacher found by roll no:", res.data)
+        # print("teacher found by phone no:", res.data)
         return res.data
 
     else:
@@ -149,23 +149,23 @@ def check_head(value):
         res = (
             supabase
             .table("Head_Data")
-            .select("Email_Id")
+            .select("*")
             .eq("Email_Id", value)
             .execute()
         )
-        print("head found by email:", res.data)
+        # print("head found by email:", res.data)
         return res.data
 
     elif input_type == "mobile":
         res = (
             supabase
             .table("Head_Data")
-            .select("Email_Id")
+            .select("*")
             .eq("Phone_no", int(value))  
             .execute()
         )
         
-        print("head found by roll no:", res.data)
+        # print("head found by phone no:", res.data)
         return res.data
 
     else:
@@ -173,8 +173,25 @@ def check_head(value):
         return None
 
 
-print("check student ",check_student("8799673722"))
-print("check teacher ",check_teacher("8799673722"))
-print("check head ",check_head("8799673722"))
+
+
+
+
+def check_against_student_using_rollno(roll_no):
+    res = (
+        supabase
+        .table("Student_Data")
+        .select("*")
+        .eq("Roll_No", roll_no)
+        .execute()
+    )
+    
+    # print("Student found by roll no:", res.data)
+    return res.data
+
+
+# print("check student ",check_student("8799673722") , "\n\n\n\n\n\n")
+# print("check teacher ",check_teacher("8799673722") , "\n\n\n\n\n\n")
+# print("check head ",check_head("8799673722") , "\n\n\n\n\n\n")
 
 # print(check_input("8799673722"))

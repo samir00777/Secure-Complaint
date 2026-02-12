@@ -167,6 +167,7 @@ def head_submit():
 @app.route("/signup", methods=["POST"])
 def signup():
 
+
     global email_for_otp
     global otp_generated
     role = request.form.get("role")
@@ -510,36 +511,76 @@ def submit_complaint():
 
 
     my_data = {}
+
+
     if my_role == "student":
+
         my_data["name"] = request.form.get("my_student_full_name")
         my_data["contact"] = request.form.get("my_student_contact_info")
         my_data["id"] = request.form.get("my_student_roll_number")
 
+        user_cmp = check_user.check_student(my_data["id"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+
+
     elif my_role == "teacher":
+
         my_data["name"] = request.form.get("my_teacher_full_name")
         my_data["contact"] = request.form.get("my_teacher_contact_info")
         my_data["id"] = request.form.get("my_teacher_id")
 
+        user_cmp = check_user.check_teacher(my_data["contact"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+
+
+
     elif my_role == "head":
+
         my_data["name"] = request.form.get("my_head_full_name")
         my_data["contact"] = request.form.get("my_head_contact_info")
         my_data["id"] = request.form.get("my_head_id")
 
+        user_cmp = check_user.check_head(my_data["contact"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+
+
     against_data = {}
+
+
+
     if against_role == "student":
+
         against_data["name"] = request.form.get("against_student_full_name")
         against_data["id"] = request.form.get("against_student_roll_number")
         against_data["complaint"] = request.form.get("against_student_complaint_text")
 
+        user_cmp = check_user.check_student(against_data["id"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+
+
+
+
     elif against_role == "teacher":
+
         against_data["name"] = request.form.get("against_teacher_full_name")
         against_data["contact"] = request.form.get("against_teacher_contact_info")
         against_data["complaint"] = request.form.get("against_teacher_complaint_text")
 
+        user_cmp = check_user.check_teacher(against_data["contact"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+
+
+
+
     elif against_role == "head":
+
         against_data["name"] = request.form.get("against_head_full_name")
         against_data["contact"] = request.form.get("against_head_contact_info")
         against_data["complaint"] = request.form.get("against_head_complaint_text")
+
+        user_cmp = check_user.check_head(against_data["contact"])
+        print("----------------------->>>>> user find from database ",user_cmp)
+        
 
     print("my role --> ",my_role)
     print("against role --> ",against_role)
@@ -552,7 +593,12 @@ def submit_complaint():
 
 
     if my_role == "student" and against_role == "student":
-        pass
+        if user_cmp and user_cmp[0]["Roll_No"] == int(against_data["id"]):
+            print("Student found in database. Complaint can be raised.")
+
+
+
+
     elif my_role == "teacher" and against_role == "student":
         pass
     elif my_role == "head" and against_role == "student":
@@ -575,8 +621,8 @@ def submit_complaint():
     return "Complaint raised Successfully"
 
 
-
-
+def hello():
+    print("Hello World")
     
 if __name__ == "__main__":
     app.run(debug=True)
