@@ -32,34 +32,34 @@ def check_input(value):
 
 
 def check_student(value):
-    # input_type = check_input(value)
+    input_type = check_input(value)
 
-    # if input_type == "email":
-    res = (
-        supabase
-        .table("Student_Data")
-        .select("*")
-        .eq("Roll_No", value)
-        .execute()
-    )
+    if input_type == "email":
+        res = (
+            supabase
+            .table("Student_Data")
+            .select("*")
+            .eq("Email_Id", value)
+            .execute()
+        )
         # print("Student found by email:", res.data)
-    return res.data
+        return res.data
 
-    # elif input_type == "mobile":
-    #     res = (
-    #         supabase
-    #         .table("Student_Data")
-    #         .select("*")
-    #         .eq("Roll_No", int(value))  
-    #         .execute()
-    #     )
+    elif input_type == "mobile":
+        res = (
+            supabase
+            .table("Student_Data")
+            .select("*")
+            .eq("Roll_No", int(value))  
+            .execute()
+        )
         
-    #     # print("Student found by phone no:", res.data)
-    #     return res.data
+        # print("Student found by phone no:", res.data)
+        return res.data
 
-    # else:
-    #     print("Invalid input")
-    #     return None
+    else:
+        print("Invalid input")
+        return None
 
 
 
