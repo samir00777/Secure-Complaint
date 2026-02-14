@@ -2,6 +2,158 @@
 <html>
 <head>
   <title>Head Complaint</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/*
+  ================================================================================
+  ACADEMIC-PROFESSIONAL STYLESHEET
+  --------------------------------------------------------------------------------
+  - Author: Gemini UI/UX Developer
+  - Goal: Clean, modern, and accessible design for an academic portal.
+  - Constraints: CSS-only modifications, no HTML changes.
+  ================================================================================
+*/
+
+/* --- 1. Global & Typographic Base --- */
+body {
+  /* A neutral, professional font stack that prefers modern system fonts. */
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  /* A light, non-distracting background color. */
+  background-color: #f4f7f9;
+  /* Standard text color for readability. */
+  color: #333;
+  /* Ensures the body takes up at least the full viewport height. */
+  min-height: 100vh;
+  /* Remove default margin. */
+  margin: 0;
+  /* Use flexbox to center the main content vertically and horizontally. */
+  display: flex;
+  /* The content should be centered as a column */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Add some padding for smaller viewports. */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* --- 2. Main Form Container --- */
+form {
+  /* Clean white background for the form area. */
+  background-color: #ffffff;
+  /* Professional, sharp-edged container. */
+  border-radius: 8px;
+  /* Subtle shadow for depth, avoids a "floating" look. */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Define a max-width for readability on large screens. */
+  max-width: 500px;
+  /* Ensure width is responsive. */
+  width: 100%;
+  /* Ample padding for internal spacing. */
+  padding: 2.5rem;
+  /* Ensures padding and border are included in the element's total width and height. */
+  box-sizing: border-box;
+  /* Center the form content */
+  text-align: center;
+}
+
+/* --- 3. Headings & Titles --- */
+h2 {
+  /* Center-align the main title. */
+  text-align: center;
+  /* A darker shade for the heading for emphasis. */
+  color: #2c3e50;
+  /* Spacing below the heading. */
+  margin-top: 0;
+  margin-bottom: 2rem;
+  /* Slightly larger font size for the heading. */
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+/* --- 4. Form Element Styling --- */
+/* Spacing for line breaks is handled by the <br> tags as per no-HTML-change rule. */
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  /* Full width to fit the container. */
+  width: 100%;
+  /* Comfortable padding for text entry. */
+  padding: 0.85rem 1rem;
+  /* Standard font size for inputs. */
+  font-size: 1rem;
+  /* Subtle border color. */
+  border: 1px solid #ced4da;
+  /* Slightly rounded corners for a modern look. */
+  border-radius: 6px;
+  /* Ensures padding and border are included in the element's total width and height. */
+  box-sizing: border-box;
+  /* Smooth transition for focus effects. */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* --- 5. Accessibility & User Feedback --- */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  /* Remove default browser outline. */
+  outline: none;
+  /* A clear, professional blue to indicate focus, meeting accessibility standards. */
+  border-color: #005a9c;
+  /* A subtle glow effect for modern browsers. */
+  box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.15);
+}
+
+/* Styling for placeholder text */
+::placeholder {
+  color: #868e96;
+  opacity: 1; /* Firefox */
+}
+
+button[type="submit"] {
+  /* Full width for a clear call-to-action. */
+  width: 100%;
+  /* Generous padding for easy clicking/tapping. */
+  padding: 0.9rem 1rem;
+  /* A professional, solid blue background. */
+  background-color: #005a9c;
+  /* White text for high contrast. */
+  color: #ffffff;
+  /* Remove default border. */
+  border: none;
+  /* Consistent rounded corners. */
+  border-radius: 6px;
+  /* Larger font size for the primary action. */
+  font-size: 1.05rem;
+  /* Bolder text for the button. */
+  font-weight: 600;
+  /* Pointer cursor to indicate it's clickable. */
+  cursor: pointer;
+  /* Smooth transition for hover effect. */
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  /* A slightly darker blue on hover for feedback, without being distracting. */
+  background-color: #004170;
+}
+
+/* --- 6. Responsive Design --- */
+@media (max-width: 600px) {
+  /* On smaller screens, the body padding provides spacing, form takes full width. */
+  form {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+  </style>
 </head>
 <body>
   <h2>Head Complaint Form</h2>

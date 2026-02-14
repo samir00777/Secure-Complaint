@@ -519,8 +519,8 @@ def submit_complaint():
         my_data["contact"] = request.form.get("my_student_contact_info")
         my_data["id"] = request.form.get("my_student_roll_number")
 
-        user_data_DB = check_user.check_against_student_using_rollno(my_data["id"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        my_user_data_DB = check_user.check_against_student_using_rollno(my_data["id"])
+        print("----------------------->>>>> user find from database ",my_user_data_DB)
 
 
 
@@ -531,8 +531,8 @@ def submit_complaint():
         my_data["contact"] = request.form.get("my_teacher_contact_info")
         my_data["id"] = request.form.get("my_teacher_id")
 
-        user_data_DB = check_user.check_teacher(my_data["contact"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        my_user_data_DB = check_user.check_teacher(my_data["contact"])
+        print("----------------------->>>>> user find from database ",my_user_data_DB)
 
 
 
@@ -542,8 +542,8 @@ def submit_complaint():
         my_data["contact"] = request.form.get("my_head_contact_info")
         my_data["id"] = request.form.get("my_head_id")
 
-        user_data_DB = check_user.check_head(my_data["contact"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        my_user_data_DB = check_user.check_head(my_data["contact"])
+        print("----------------------->>>>> user find from database ",my_user_data_DB)
 
 
     against_data = {}
@@ -556,8 +556,8 @@ def submit_complaint():
         against_data["id"] = request.form.get("against_student_roll_number")
         against_data["complaint"] = request.form.get("against_student_complaint_text")
 
-        user_data_DB = check_user.check_against_student_using_rollno(against_data["id"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        against_user_data_DB = check_user.check_against_student_using_rollno(against_data["id"])
+        print("----------------------->>>>> user find from database ",against_user_data_DB)
 
 
 
@@ -568,8 +568,8 @@ def submit_complaint():
         against_data["contact"] = request.form.get("against_teacher_contact_info")
         against_data["complaint"] = request.form.get("against_teacher_complaint_text")
 
-        user_data_DB = check_user.check_teacher(against_data["contact"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        against_user_data_DB = check_user.check_teacher(against_data["contact"])
+        print("----------------------->>>>> user find from database ",against_user_data_DB)
 
 
 
@@ -580,49 +580,66 @@ def submit_complaint():
         against_data["contact"] = request.form.get("against_head_contact_info")
         against_data["complaint"] = request.form.get("against_head_complaint_text")
 
-        user_data_DB = check_user.check_head(against_data["contact"])
-        print("----------------------->>>>> user find from database ",user_data_DB)
+        against_user_data_DB = check_user.check_head(against_data["contact"])
+        print("----------------------->>>>> user find from database ",against_user_data_DB)
         
 
-    print("my role --> ",my_role)
-    print("against role --> ",against_role)
-    print("my data --> ",my_data)
-    print("against data --> ",against_data)
+    print("my role ---------------------------------------------------------------------------------->\n ",my_role)
+    print("against role ----------------------------------------------------------------------------->\n ",against_role)
+    print("my data ---------------------------------------------------------------------------------->\n ",my_data)
+    print("my user data from database --------------------------------------------------------------->\n ",my_user_data_DB)
+    print("against data ----------------------------------------------------------------------------->\n ",against_data)
+    print("against user data from database ---------------------------------------------------------->\n ",against_user_data_DB)
 
 
     
 
-
+# ------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------------
 
     if my_role == "student" and against_role == "student":
-        if user_data_DB and user_data_DB[0]["Roll_No"] == int(against_data["id"]):
-            # print("Student found in database. Complaint can be raised.")
-            contact_type = check_user.check_input(my_data["contact"])
-            print("Contact type:----->>  ", contact_type)
 
-            if contact_type == "email":
-                if user_data_DB[0]["Email_Id"] == my_data["contact"]:
-                    # print("Contact information matches. Complaint can be raised.")
-                    # send a email using email module
-                    pass
+        print("STUDENT --> STUDENT --> COMPLAINT LOGIC STARTS")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_user_data_DB[0]['Roll_No']}------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_user_data_DB[0]['Roll_No']}-------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
 
-                else:
-                    print(" STUDENT --> STUDENT --> EMAIL --> NOT VALID")
-                    return "Contact information does not match. Complaint cannot be raised."
-                
-            elif contact_type == "mobile":
-                if user_data_DB[0]["Phone_no"] == int(my_data["contact"]):
-                    # print("Contact information matches. Complaint can be raised.")
-                    # send a email using email module
-                    pass
+        if str(my_data["id"]) == str(my_user_data_DB[0]["Roll_No"]):
 
-                else:
-                    print(" STUDENT --> STUDENT --> PHONE --> NOT VALID")
-                    return "Contact information does not match. Complaint cannot be raised."
+            print("student --> student --> my data is correct and valid")
+            email_module.send_complaint_email_my(f"Phone: {my_user_data_DB[0]['Phone_no']} \nEmail: {my_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Email_Id"])
+
+        else:
+            print(" STUDENT --> STUDENT --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+
+
+
+
+        if str(against_user_data_DB[0]["Roll_No"]) == str(against_data["id"]):
+
+            print("student --> student --> against data is correct and valid")
+            email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
             
-            else:
-                print(" STUDENT --> STUDENT --> NOT VALID")
-                return "Invalid contact information. Complaint cannot be raised."
+
+        else:
+            print(" STUDENT --> STUDENT --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+        
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------------------------
+
+
 
     elif my_role == "teacher" and against_role == "student":
         pass
@@ -653,7 +670,7 @@ def hello():
     print("Hello World")
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
 
 
 

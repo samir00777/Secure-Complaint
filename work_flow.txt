@@ -117,3 +117,37 @@ git status
 git add .
 git commit -m "email"
 git push
+
+
+
+
+
+  # print("Student found in database. Complaint can be raised.")
+            # my_contact_type = check_user.check_input(my_data["contact"])
+            # print("Contact type:----->>  ", my_contact_type)
+
+            # if my_contact_type == "email":
+            #     if against_user_data_DB[0]["Email_Id"] == against_data["contact"]:
+            #         # print("Contact information matches. Complaint can be raised.")
+            #         # send a email using email module
+            #         # pass
+            #         email_module.send_complaint_email_against(my_data["contact"] , my_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Phone_no"])
+
+            #     else:
+            #         print(" STUDENT --> STUDENT --> EMAIL --> NOT VALID")
+            #         return "Contact information does not match. Complaint cannot be raised."
+                
+            # elif my_contact_type == "mobile":
+            #     if my_user_data_DB[0]["Phone_no"] == int(my_data["contact"]):
+            #         # print("Contact information matches. Complaint can be raised.")
+            #         # send a email using email module
+            #         email_module.send_complaint_email_against(my_data["contact"] , my_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Phone_no"])
+
+            #     else:
+            #         print(" STUDENT --> STUDENT --> PHONE --> NOT VALID")
+            #         return "Contact information does not match. Complaint cannot be raised."
+            
+            # else:
+            #     print(" STUDENT --> STUDENT --> NOT VALID ---> INVALID CONTACT INFO")
+            #     return "Invalid contact information. Complaint cannot be raised."
+
