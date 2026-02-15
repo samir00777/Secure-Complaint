@@ -50,8 +50,7 @@
     # app.run(debug=True)
 
 
-# -----------------------------------------------------------------------------------------------------------------------------------------------------************************************************************************************
-
+# -----------------------------------------------------------------------------------------------------------------------------------------------------
 # 'http://127.0.0.1:5000/'
 import random
 from flask import Flask, request, send_file, redirect, url_for
@@ -584,12 +583,12 @@ def submit_complaint():
         print("----------------------->>>>> user find from database ",against_user_data_DB)
         
 
-    print("my role ---------------------------------------------------------------------------------->\n ",my_role)
-    print("against role ----------------------------------------------------------------------------->\n ",against_role)
-    print("my data ---------------------------------------------------------------------------------->\n ",my_data)
-    print("my user data from database --------------------------------------------------------------->\n ",my_user_data_DB)
-    print("against data ----------------------------------------------------------------------------->\n ",against_data)
-    print("against user data from database ---------------------------------------------------------->\n ",against_user_data_DB)
+    print("my role --------------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_role)
+    print("against role ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",against_role)
+    print("my data --------------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_data)
+    print("my my data from database ---------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_user_data_DB)
+    print("against data ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",against_data)
+    print("against against data from database ------------------------------------------>>>>>>>>>>>>>>>\n ::- ",against_user_data_DB)
 
 
     
@@ -642,7 +641,40 @@ def submit_complaint():
 
 
     elif my_role == "teacher" and against_role == "student":
-        pass
+
+        print("TEACHER --> STUDENT --> COMPLAINT LOGIC STARTS")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_user_data_DB[0]['Teachers_Id']}--------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_user_data_DB[0]['Roll_No']}-------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        
+
+        if str(my_data["id"]) == str(my_user_data_DB[0]["Teachers_Id"]):
+
+            print("TEACHER --> STUDENT --> MY DATA IS CORRECT AND VALID")
+            email_module.send_complaint_email_my(f"Phone: {my_user_data_DB[0]['Phone_no']} \nEmail: {my_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Email_Id"])
+        
+        else:
+
+            print("TEACHER --> STUDENT --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+        
+
+        if str(against_user_data_DB[0]["Roll_No"]) == str(against_data["id"]):
+
+            print("TEACHER --> STUDENT --> AGAINST DATA IS CORRECT AND VALID")
+            email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
+
+        else:
+            
+            print("TEACHER --> STUDENT --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+
     elif my_role == "head" and against_role == "student":
         pass
     elif my_role == "student" and against_role == "teacher":

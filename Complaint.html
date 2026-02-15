@@ -23,7 +23,7 @@
 			}
 
 			input,
-			select,
+			select,	
 			textarea
 			{
 				width: 100%;
@@ -47,7 +47,15 @@
 				document.getElementById("ahead").style.display = "none";
 				document.getElementById("a" + against.value).style.display = "block";
 			}
+
+			function toRoleChange()
+			{
+				document.getElementById("toteacher").style.display = "none";
+				document.getElementById("tohead").style.display = "none";
+				document.getElementById("to" + to_role.value).style.display = "block";
+			}
 		</script>
+
 	</head>
 
 	<body>
@@ -151,6 +159,36 @@
 					<textarea name="against_head_complaint_text"></textarea>
 				</div>
 			</fieldset>
+
+			<!-- ================= COMPLAINT TO ================= -->
+			<fieldset>
+				<legend>Complaint To</legend>
+
+				<select id="to_role" name="to_role" onchange="toRoleChange()">
+					<option value="">Select</option>
+					<option value="teacher">Teacher</option>
+					<option value="head">Head</option>
+				</select>
+
+				<!-- To Teacher -->
+				<div id="toteacher" style="display:none">
+					<label>Teacher Name</label>
+					<input name="to_teacher_full_name">
+
+					<label>Phone / Email</label>
+					<input name="to_teacher_contact_info">
+				</div>
+
+				<!-- To Head -->
+				<div id="tohead" style="display:none">
+					<label>Head Name</label>
+					<input name="to_head_full_name">
+
+					<label>Phone / Email</label>
+					<input name="to_head_contact_info">
+				</div>
+			</fieldset>
+
 
 			<button type="submit">Submit Complaint</button>
 
