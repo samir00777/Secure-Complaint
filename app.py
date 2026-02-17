@@ -519,6 +519,8 @@ def submit_complaint():
 
 
 
+
+
     # MY ROLE DATA
 
     if my_role == "student":
@@ -852,11 +854,102 @@ def submit_complaint():
             return "User not found. Complaint cannot be raised."
 
     elif my_role == "student" and against_role == "head":
-        pass
+        
+        print("STUDENT --> HEAD --> COMPLAINT LOGIC STARTS")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_user_data_DB[0]['Roll_No']}------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}-------------------------")
+        print("-------------------------------------------------------------------------------------------------------")    
+
+
+        if str(my_data["id"]) == str(my_user_data_DB[0]["Roll_No"]):
+
+            print("STUDENT --> HEAD --> MY DATA IS CORRECT AND VALID")
+            email_module.send_complaint_email_my(f"Phone: {my_user_data_DB[0]['Phone_no']} \nEmail: {my_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Email_Id"])
+
+        else:
+
+            print("STUDENT --> HEAD --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+
+        if str(against_user_data_DB[0]["Head_Id"]) == str(against_data["id"]):
+
+            print("STUDENT --> HEAD --> AGAINST DATA IS CORRECT AND VALID")
+
+            # email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
+
+        else:
+
+            print("STUDENT --> HEAD --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+
+
     elif my_role == "teacher" and against_role == "head":
-        pass
+        
+
+        print("TEACHER --> HEAD --> COMPLAINT LOGIC STARTS")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_user_data_DB[0]['Teachers_Id']}--------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}---------------------")
+        print("-------------------------------------------------------------------------------------------------------")    
+
+
+        if str(my_data["id"]) == str(my_user_data_DB[0]["Teachers_Id"]):
+
+            print("TEACHER --> HEAD --> MY DATA IS CORRECT AND VALID")
+            email_module.send_complaint_email_my(f"Phone: {my_user_data_DB[0]['Phone_no']} \nEmail: {my_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Email_Id"])
+
+        else:
+
+            print("TEACHER --> HEAD --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+        
+        if str(against_user_data_DB[0]["Head_Id"]) == str(against_data["id"]):
+
+            print("TEACHER --> HEAD --> AGAINST DATA IS CORRECT AND VALID")
+
+            # email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
+
+        else:
+
+            print("TEACHER --> HEAD --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+
+
+
     elif my_role == "head" and against_role == "head":
-        pass
+        print("HEAD --> HEAD --> COMPLAINT LOGIC STARTS")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{my_user_data_DB[0]['Head_Id']}------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+        print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}-------------------------")
+        print("-------------------------------------------------------------------------------------------------------")
+
+        if str(my_data["id"]) == str(my_user_data_DB[0]["Head_Id"]):
+
+            print("HEAD --> HEAD --> MY DATA IS CORRECT AND VALID")
+            email_module.send_complaint_email_my(f"Phone: {my_user_data_DB[0]['Phone_no']} \nEmail: {my_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,my_user_data_DB[0]["Name"] , my_user_data_DB[0]["Email_Id"])
+
+        else:
+
+            print("HEAD --> HEAD --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+        
+
 
 
 
