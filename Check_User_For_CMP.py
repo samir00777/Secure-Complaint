@@ -22,6 +22,11 @@ supabase = create_client(url, key)
 #     return res.data
 
 
+
+
+
+
+
 def check_input(value):
     if re.fullmatch(r"[0-9]{10}", value):
         return "mobile"
@@ -29,6 +34,12 @@ def check_input(value):
         return "email"
     else:
         return "invalid"
+
+
+
+
+
+
 
 
 def check_student(value):
