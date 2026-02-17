@@ -60,7 +60,7 @@ import Student_data as student_module
 import Teacher_Data as teacher_module
 import Head_Data as head_module
 import Check_User_For_CMP as check_user
-
+import add_to_on_DB as add_complaint_module
 
 
 email_for_otp = ""
@@ -1023,8 +1023,12 @@ def submit_complaint():
 
 
         to_role_data_DB = check_user.check_teacher(to_role_data["contact"])
+
+        if not to_role_data_DB:
+            print("TEACHER --> TEACHER --> NOT VALID --> USER NOT FOUND --->> TO ROLE DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
         # email_module.send_complaint_email_to_teacher(f"Phone: {to_role_data_DB[0]['Phone_no']} \nEmail: {to_role_data_DB[0]['Email_Id']}" , against_data["complaint"] ,to_role_data_DB[0]["Name"] , to_role_data_DB[0]["Email_Id"])
-        # print("----------------------->>>>> user find from database ",to_role_data_DB)
+        
 
         
     
@@ -1034,7 +1038,11 @@ def submit_complaint():
         to_role_data["contact"] = request.form.get("to_head_contact_info")
 
         to_role_data_DB = check_user.check_head(to_role_data["contact"])
-        # print("----------------------->>>>> user find from database ",to_role_data_DB)
+
+        if not to_role_data_DB:
+            print("HEAD --> HEAD --> NOT VALID --> USER NOT FOUND --->> TO ROLE DATA IS NOT VALID")
+            return "User not found. Complaint cannot be raised."
+        # email_module.send_complaint_email_to_head(f"Phone: {to_role_data_DB[0]['Phone_no']} \nEmail: {to_role_data_DB[0]['Email_Id']}" , against_data["complaint"] ,to_role_data_DB[0]["Name"] , to_role_data_DB[0]["Email_Id"])
 
     else:
         print("Invalid to_role")
@@ -1054,8 +1062,21 @@ def submit_complaint():
             against_data.get("contact", "N/A") or against_data.get("id", "N/A"),
             against_data["complaint"]
         )
-        
+    
 
+    add_complaint_module.insert_complaint(
+        my_role.capitalize(),
+        my_user_data_DB["name"],
+        my_user_data_DB["contact"],
+        against_role.capitalize(),
+        against_user_data_DB["name"],
+        against_user_data_DB.get("contact", "N/A") or against_user_data_DB.get("id", "N/A"),
+        to_role.capitalize(),
+        to_role_data_DB[0]["Name"],
+        to_role_data_DB[0].get("contact", "N/A") or to_role_data_DB[0].get("id", "N/A"),
+        against_data["complaint"]
+    )
+    
 
 
 
