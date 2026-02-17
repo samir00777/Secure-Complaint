@@ -622,6 +622,13 @@ def submit_complaint():
 # ------------------------------------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------------------
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+
+
     if my_role == "student" and against_role == "student":
 
         print("STUDENT --> STUDENT --> COMPLAINT LOGIC STARTS")
@@ -662,6 +669,11 @@ def submit_complaint():
 # ------------------------------------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------------------
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
 
@@ -701,6 +713,11 @@ def submit_complaint():
             print("TEACHER --> STUDENT --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
         
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
 
@@ -740,6 +757,11 @@ def submit_complaint():
             print("HEAD --> STUDENT --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
     elif my_role == "student" and against_role == "teacher":
@@ -750,7 +772,7 @@ def submit_complaint():
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Roll_No']}------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Teachers_Id']}---------------------")
         print("-------------------------------------------------------------------------------------------------------")
@@ -766,7 +788,7 @@ def submit_complaint():
             print("STUDENT --> TEACHER --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
 
-        if str(against_user_data_DB[0]['Teachers_Id']) == str(against_data['id']):
+        if (str(against_user_data_DB[0]['Email_Id']) == str(against_data['contact'])  or str(against_user_data_DB[0]['Phone_no']) == str(against_data['contact'])):
 
             print("STUDENT --> TEACHER --> AGAINST DATA IS CORRECT AND VALID")
 
@@ -777,6 +799,11 @@ def submit_complaint():
             print("STUDENT --> TEACHER --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
     elif my_role == "teacher" and against_role == "teacher":
@@ -788,7 +815,7 @@ def submit_complaint():
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Teachers_Id']}--------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}-----------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Teachers_Id']}---------------------")
         print("-------------------------------------------------------------------------------------------------------")    
@@ -804,7 +831,7 @@ def submit_complaint():
             print("TEACHER --> TEACHER --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
         
-        if str(against_user_data_DB[0]["Teachers_Id"]) == str(against_data["id"]):
+        if str(against_user_data_DB[0]["Phone_no"]) == str(against_data["contact"]) or str(against_user_data_DB[0]["Email_Id"]) == str(against_data["contact"]):
 
             print("TEACHER --> TEACHER --> AGAINST DATA IS CORRECT AND VALID")
 
@@ -816,6 +843,11 @@ def submit_complaint():
             return "User not found. Complaint cannot be raised."
         
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
     elif my_role == "head" and against_role == "teacher":
@@ -826,7 +858,7 @@ def submit_complaint():
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Head_Id']}------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}-----------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Teachers_Id']}---------------------")
         print("-------------------------------------------------------------------------------------------------------")    
@@ -842,7 +874,7 @@ def submit_complaint():
             print("HEAD --> TEACHER --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
         
-        if str(against_user_data_DB[0]["Teachers_Id"]) == str(against_data["id"]):
+        if str(against_user_data_DB[0]["Phone_no"]) == str(against_data["contact"]) or str(against_user_data_DB[0]["Email_Id"]) == str(against_data["contact"]):
 
             print("HEAD --> TEACHER --> AGAINST DATA IS CORRECT AND VALID")
 
@@ -852,6 +884,14 @@ def submit_complaint():
 
             print("HEAD --> TEACHER --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
+        
+
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+
 
     elif my_role == "student" and against_role == "head":
         
@@ -861,7 +901,7 @@ def submit_complaint():
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Roll_No']}------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}-----------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}-------------------------")
         print("-------------------------------------------------------------------------------------------------------")    
@@ -877,7 +917,7 @@ def submit_complaint():
             print("STUDENT --> HEAD --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
 
-        if str(against_user_data_DB[0]["Head_Id"]) == str(against_data["id"]):
+        if str(against_user_data_DB[0]["Email_Id"]) == str(against_data["contact"]) or str(against_user_data_DB[0]["Phone_no"]) == str(against_data["contact"]):
 
             print("STUDENT --> HEAD --> AGAINST DATA IS CORRECT AND VALID")
 
@@ -889,6 +929,13 @@ def submit_complaint():
             return "User not found. Complaint cannot be raised."
 
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+
+
     elif my_role == "teacher" and against_role == "head":
         
 
@@ -898,7 +945,7 @@ def submit_complaint():
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Teachers_Id']}--------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}-----------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}---------------------")
         print("-------------------------------------------------------------------------------------------------------")    
@@ -914,7 +961,7 @@ def submit_complaint():
             print("TEACHER --> HEAD --> NOT VALID --> USER NOT FOUND --->> MY DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
         
-        if str(against_user_data_DB[0]["Head_Id"]) == str(against_data["id"]):
+        if (str(against_user_data_DB[0]["Email_Id"]) == str(against_data["contact"]) or str(against_user_data_DB[0]["Phone_no"]) == str(against_data["contact"])):
 
             print("TEACHER --> HEAD --> AGAINST DATA IS CORRECT AND VALID")
 
@@ -926,15 +973,24 @@ def submit_complaint():
             return "User not found. Complaint cannot be raised."
 
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+
+
 
     elif my_role == "head" and against_role == "head":
+
+
         print("HEAD --> HEAD --> COMPLAINT LOGIC STARTS")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_data['id']}----------------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{my_user_data_DB[0]['Head_Id']}------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
-        print(f"-----------------------------------------{against_data['id']}-----------------------------------------")
+        print(f"-----------------------------------------{against_data['contact']}-----------------------------------------")
         print("-------------------------------------------------------------------------------------------------------")
         print(f"-----------------------------------------{against_user_data_DB[0]['Head_Id']}-------------------------")
         print("-------------------------------------------------------------------------------------------------------")
@@ -950,6 +1006,11 @@ def submit_complaint():
             return "User not found. Complaint cannot be raised."
         
 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
+# *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  *  *  *  M  *  * 
 
 
 
