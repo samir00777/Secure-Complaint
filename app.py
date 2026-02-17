@@ -481,6 +481,13 @@ def submit_complaint():
 
     my_role = request.form.get("my_role").lower()
     against_role = request.form.get("against_role").lower()
+    to_role = request.form.get("to_role").lower()
+    to_role_data = {}
+    my_data = {}
+    against_data = {}
+    to_role_data_DB = None
+
+
 
     # data = {
     #     "my_role": my_role,
@@ -509,8 +516,10 @@ def submit_complaint():
 
 
 
-    my_data = {}
 
+
+
+    # MY ROLE DATA
 
     if my_role == "student":
 
@@ -545,10 +554,14 @@ def submit_complaint():
         print("----------------------->>>>> user find from database ",my_user_data_DB)
 
 
-    against_data = {}
 
 
 
+
+
+
+    
+    # AGAINST ROLE DATA
     if against_role == "student":
 
         against_data["name"] = request.form.get("against_student_full_name")
@@ -556,7 +569,7 @@ def submit_complaint():
         against_data["complaint"] = request.form.get("against_student_complaint_text")
 
         against_user_data_DB = check_user.check_against_student_using_rollno(against_data["id"])
-        print("----------------------->>>>> user find from database ",against_user_data_DB)
+        # print("----------------------->>>>> user find from database ",against_user_data_DB)
 
 
 
@@ -568,7 +581,7 @@ def submit_complaint():
         against_data["complaint"] = request.form.get("against_teacher_complaint_text")
 
         against_user_data_DB = check_user.check_teacher(against_data["contact"])
-        print("----------------------->>>>> user find from database ",against_user_data_DB)
+        # print("----------------------->>>>> user find from database ",against_user_data_DB)
 
 
 
@@ -580,15 +593,25 @@ def submit_complaint():
         against_data["complaint"] = request.form.get("against_head_complaint_text")
 
         against_user_data_DB = check_user.check_head(against_data["contact"])
-        print("----------------------->>>>> user find from database ",against_user_data_DB)
+        # print("----------------------->>>>> user find from database ",against_user_data_DB)
         
+
+
+
+
+
+    
+
 
     print("my role --------------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_role)
     print("against role ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",against_role)
+    print("to role --------------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",to_role)
     print("my data --------------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_data)
     print("my my data from database ---------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",my_user_data_DB)
     print("against data ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",against_data)
+    print("to role data ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",to_role_data)
     print("against against data from database ------------------------------------------>>>>>>>>>>>>>>>\n ::- ",against_user_data_DB)
+    print("to role data from database ---------------------------------------------------------------->>>>>>>>>>>>>>>\n ::- ",to_role_data_DB)
 
 
     
@@ -625,7 +648,7 @@ def submit_complaint():
         if str(against_user_data_DB[0]["Roll_No"]) == str(against_data["id"]):
 
             print("student --> student --> against data is correct and valid")
-            email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
+            # email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
             
 
         else:
@@ -668,12 +691,16 @@ def submit_complaint():
         if str(against_user_data_DB[0]["Roll_No"]) == str(against_data["id"]):
 
             print("TEACHER --> STUDENT --> AGAINST DATA IS CORRECT AND VALID")
-            email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
+
+            # email_module.send_complaint_email_against(f"Phone: {against_user_data_DB[0]['Phone_no']} \nEmail: {against_user_data_DB[0]['Email_Id']}" , against_data["complaint"] ,against_user_data_DB[0]["Name"] , against_user_data_DB[0]["Email_Id"])
 
         else:
-            
+
             print("TEACHER --> STUDENT --> NOT VALID --> USER NOT FOUND  --->> AGAINST DATA IS NOT VALID")
             return "User not found. Complaint cannot be raised."
+        
+
+        
 
     elif my_role == "head" and against_role == "student":
         pass
@@ -690,6 +717,49 @@ def submit_complaint():
     elif my_role == "head" and against_role == "head":
         pass
 
+
+
+
+
+    if to_role == "teacher":
+
+        to_role_data["name"] = request.form.get("to_teacher_full_name")
+        to_role_data["contact"] = request.form.get("to_teacher_contact_info")
+
+
+        to_role_data_DB = check_user.check_teacher(to_role_data["contact"])
+        # email_module.send_complaint_email_to_teacher(f"Phone: {to_role_data_DB[0]['Phone_no']} \nEmail: {to_role_data_DB[0]['Email_Id']}" , against_data["complaint"] ,to_role_data_DB[0]["Name"] , to_role_data_DB[0]["Email_Id"])
+        # print("----------------------->>>>> user find from database ",to_role_data_DB)
+
+        
+    
+    elif to_role == "head":
+
+        to_role_data["name"] = request.form.get("to_head_full_name")
+        to_role_data["contact"] = request.form.get("to_head_contact_info")
+
+        to_role_data_DB = check_user.check_head(to_role_data["contact"])
+        # print("----------------------->>>>> user find from database ",to_role_data_DB)
+
+    else:
+        print("Invalid to_role")
+        return "Invalid to_role"
+    
+
+    email_module.send_complaint_email_to_TO_person(
+            to_role_data_DB[0]['Email_Id'],
+            against_data["complaint"],
+            to_role_data_DB[0]['Name'],
+            my_role.capitalize(),
+            my_data["name"],
+            my_data["contact"],
+            my_data["id"],
+            against_role.capitalize(),
+            against_data["name"],
+            against_data.get("contact", "N/A") or against_data.get("id", "N/A"),
+            against_data["complaint"]
+        )
+        
 
 
 
