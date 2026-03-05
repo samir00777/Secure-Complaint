@@ -2,7 +2,7 @@
 # # import httpx
 
 # # url = "https://koabmxqfnuejulwbscng.supabase.co"
-# # key =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvYWJteHFmbnVlanVsd2JzY25nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyNzg1MDAsImV4cCI6MjA4Mjg1NDUwMH0.sGhBrRGwlcxK9JWT4FOGnAbIGNa_3xve4ISOE1-hZWM"
+# # key =  "--your api key--"
 # # supabase = create_client(url, key)
 # # print("Connected successfully")
 
@@ -36,7 +36,7 @@
 
 
 # # import Emaillll as e
-# # e.send_email_using_smtplib("samirsx38@gmail.com", 123456)
+# # e.send_email_using_smtplib("--your email--", 123456)
 
 
 
@@ -56,9 +56,9 @@
 
 #     Sender Details:
 #     Name: Samir Karavadara2
-#     Email: samirsx38@gmail.com
+#     Email: --your email--
 #     Mobile: Phone: 8799673722
-# Email: samirsx38@gmail.com
+# Email: --your email--
 
 #     Thank you.
 # ''' == '''Dear Sir/Madam,
@@ -69,10 +69,10 @@
 
 #     Sender Details:
 #     Name: samir-2
-#     Email: samirsx38@gmail.com
+#     Email: --your email--
 
 #     Mobile: Phone: 1234567890
-# Email: samirsx38@gmail.com
+# Email: --your email--
 
 #     Thank you.
 # ''')

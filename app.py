@@ -61,6 +61,7 @@ import Teacher_Data as teacher_module
 import Head_Data as head_module
 import Check_User_For_CMP as check_user
 import add_to_on_DB as add_complaint_module
+import Queue as queue_module
 
 
 email_for_otp = ""
@@ -1066,18 +1067,20 @@ def submit_complaint():
 
     add_complaint_module.insert_complaint(
         my_role.capitalize(),
-        my_user_data_DB["name"],
-        my_user_data_DB["contact"],
+        my_user_data_DB[0]["Name"],
+        my_user_data_DB[0]["Phone_no"],  
         against_role.capitalize(),
-        against_user_data_DB["name"],
-        against_user_data_DB.get("contact", "N/A") or against_user_data_DB.get("id", "N/A"),
+        against_user_data_DB[0]["Name"],
+        against_user_data_DB[0].get("Phone_no", "N/A") or against_user_data_DB[0].get("Phone_no", "N/A"),
         to_role.capitalize(),
         to_role_data_DB[0]["Name"],
-        to_role_data_DB[0].get("contact", "N/A") or to_role_data_DB[0].get("id", "N/A"),
+        to_role_data_DB[0].get("Phone_no", "N/A") or to_role_data_DB[0].get("Phone_no", "N/A"),
         against_data["complaint"]
     )
     
 
+
+    
 
 
 

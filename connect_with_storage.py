@@ -9,10 +9,10 @@
 # Email = "hello"
 
 # conn = mysql.connector.connect(
-#     host="localhost",
-#     user="root",
+#     host="---",
+#     user="---",
 #     password="",
-#     database="python"
+#     database="---"
 # )
 
 # print("Connected!")

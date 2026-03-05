@@ -8,8 +8,8 @@ def send_email_using_smtplib(email, new_otp):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(
-        "karavadarasamir92@gmail.com",
-        "pfni yacj uvmb jqya"
+        "--your email--",
+        "--your app password--"
     )
     
 
@@ -28,7 +28,7 @@ Your App Team
 """
 
     server.sendmail(
-        "karavadarasamir92@gmail.com",
+        "--your email--",
         email,
         message
     )
@@ -44,8 +44,8 @@ def send_complaint_email_against(mobile,  complaint_details , name , email):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(
-        "karavadarasamir92@gmail.com",
-        "pfni yacj uvmb jqya"
+        "--your email--",
+        "--your app password--"
     )
     
 
@@ -65,7 +65,7 @@ def send_complaint_email_against(mobile,  complaint_details , name , email):
     '''
 
     server.sendmail(
-        "karavadarasamir92@gmail.com",
+        "--your email--",
         email,
         message
     )
@@ -82,8 +82,8 @@ def send_complaint_email_my(mobile,  complaint_details , name , email):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(
-        "karavadarasamir92@gmail.com",
-        "pfni yacj uvmb jqya"
+        "--your email--",
+        "--your app password--"
     )
     
 
@@ -98,7 +98,7 @@ Regards,
 
 '''
     server.sendmail(
-        "karavadarasamir92@gmail.com",
+        "--your email--",
         email,
         message
     )
@@ -131,8 +131,8 @@ def send_complaint_email_to_TO_person(
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login(
-        "karavadarasamir92@gmail.com",
-        "pfni yacj uvmb jqya"
+        "--your email--",
+        "--your app password--"
     )
     
 
@@ -162,7 +162,7 @@ Regards,
 """
     
     server.sendmail(
-        "karavadarasamir92@gmail.com",
+        "   --your email--",
         to_email,
         message
     )
@@ -173,11 +173,11 @@ Regards,
 
 
 
-# send_complaint_email_against("samirsx38@gmail.com", "hello" , "samir karavadara" , 741258963)
-# send_complaint_email_my("samirsx38@gmail.com" ,  "hello" , "samir karavadara" , 741258963)
+# send_complaint_email_against("--your email--", "hello" , "samir karavadara" , 741258963)
+# send_complaint_email_my("--your email--" ,  "hello" , "samir karavadara" , 741258963)
 
 # send_complaint_email_to_TO_person(
-#     "rajputmihir2006@gmail.com",
+#     "--your email--",
 #     "Test Complaint",
 #     "John Doe",
 #     "Manager",

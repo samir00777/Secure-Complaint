@@ -115,7 +115,7 @@ against_head_complaint_text
 add a value on git hub
 git status
 git add .
-git commit -m "Script"
+git commit -m "By By"
 git push
 
 
