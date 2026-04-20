@@ -1,293 +1,142 @@
 <!DOCTYPE html>
 <html lang="gu">
-	<head>
-		<meta charset="UTF-8">
-		<title>Complaint Form</title>
 
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Form</title>
 
-			:root {
-				--bg-color: #F4F7F9;
-				--form-bg-color: #FFFFFF;
-				--text-color: #2D3748;
-				--text-light: #718096;
-				--accent-color: #3182CE;
-				--accent-hover: #2B6CB0;
-				--border-color: #E2E8F0;
-			}
+    <link rel="stylesheet" href="Complaint.css">
+    <script src="Complaint.js"></script>
+</head>
 
-			body {
-				font-family: 'Inter', sans-serif;
-				background-color: var(--bg-color);
-				margin: 0;
-				padding: 60px 20px;
-				color: var(--text-color);
-				display: flex;
-				justify-content: center;
-			}
+<body>
 
-			form {
-				background: var(--form-bg-color);
-				max-width: 768px;
-				width: 100%;
-				padding: 48px;
-				border-radius: 12px;
-				box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-			}
+    <h2 style="text-align: center;">Complaint Raise Form</h2>
+    <br>
 
-			h2 {
-				text-align: center;
-				font-size: 26px;
-				font-weight: 600;
-				margin-top: 0;
-				margin-bottom: 48px;
-			}
+    <form method="POST" action="/submit_complaint">
 
-			fieldset {
-				border: none;
-				padding: 0;
-				margin: 0 0 32px 0;
-			}
+        <fieldset>
+            <legend>My Role</legend>
 
-			legend {
-				font-size: 18px;
-				font-weight: 600;
-				padding: 0;
-				margin-bottom: 24px;
-				width: 100%;
-				border-bottom: 1px solid var(--border-color);
-				padding-bottom: 12px;
-			}
+            <select id="role" name="my_role" onchange="myRoleChange()">
+                <option value="">Select</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="head">Head</option>
+            </select>
 
-			label {
-				display: block;
-				margin-top: 20px;
-				margin-bottom: 8px;
-				font-weight: 500;
-				font-size: 14px;
-				color: var(--text-light);
-			}
+            <div id="student" style="display:none">
+                <label>Full Name</label>
+                <input name="my_student_full_name">
 
-			input,
-			select,
-			textarea {
-				width: 100%;
-				padding: 12px;
-				box-sizing: border-box;
-				border: 1px solid var(--border-color);
-				border-radius: 8px;
-				font-family: 'Inter', sans-serif;
-				font-size: 16px;
-				background-color: #FFFFFF;
-				transition: border-color 0.2s ease, box-shadow 0.2s ease;
-			}
+                <label>Phone / Email</label>
+                <input name="my_student_contact_info">
 
-			input:focus,
-			select:focus,
-			textarea:focus {
-				outline: none;
-				border-color: var(--accent-color);
-				box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
-			}
+                <label>Roll Number</label>
+                <input name="my_student_roll_number">
+            </div>
 
-			textarea {
-				min-height: 140px;
-				resize: vertical;
-			}
+            <div id="teacher" style="display:none">
+                <label>Full Name</label>
+                <input name="my_teacher_full_name">
 
-			select {
-				-webkit-appearance: none;
-				-moz-appearance: none;
-				appearance: none;
-				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23718096' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-				background-position: right 0.75rem center;
-				background-repeat: no-repeat;
-				background-size: 1.5em 1.5em;
-			}
+                <label>Phone / Email</label>
+                <input name="my_teacher_contact_info">
 
-			button {
-				width: 100%;
-				background: var(--accent-color);
-				color: white;
-				border: none;
-				cursor: pointer;
-				font-weight: 600;
-				font-size: 16px;
-				margin-top: 24px;
-				padding: 16px;
-				border-radius: 8px;
-				transition: background-color 0.2s ease;
-			}
+                <label>Teacher ID</label>
+                <input name="my_teacher_id">
+            </div>
 
-			button:hover {
-				background: var(--accent-hover);
-			}
-		</style>
+            <div id="head" style="display:none">
+                <label>Full Name</label>
+                <input name="my_head_full_name">
 
-		<script>
-			function myRoleChange()
-			{
-				document.getElementById("student").style.display = "none";
-				document.getElementById("teacher").style.display = "none";
-				document.getElementById("head").style.display = "none";
-				document.getElementById(role.value).style.display = "block";
-			}
+                <label>Phone / Email</label>
+                <input name="my_head_contact_info">
 
-			function againstRoleChange()
-			{
-				document.getElementById("astudent").style.display = "none";
-				document.getElementById("ateacher").style.display = "none";
-				document.getElementById("ahead").style.display = "none";
-				document.getElementById("a" + against.value).style.display = "block";
-			}
+                <label>Head ID</label>
+                <input name="my_head_id">
+            </div>
 
-			function toRoleChange()
-			{
-				document.getElementById("toteacher").style.display = "none";
-				document.getElementById("tohead").style.display = "none";
-				document.getElementById("to" + to_role.value).style.display = "block";
-			}
-		</script>
+        </fieldset>
 
-	</head>
+        <fieldset>
+            <legend>Complaint Against</legend>
 
-	<body>
+            <select id="against" name="against_role" onchange="againstRoleChange()">
+                <option value="">Select</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="head">Head</option>
+            </select>
 
-		<h2 style="text-align: center;">Complaint Raise Form</h2>
-		<br>
-		
-		<form method="POST" action="/submit_complaint">
+            <div id="astudent" style="display:none">
+                <label>Full Name</label>
+                <input name="against_student_full_name">
 
-			<!-- ================= MY ROLE ================= -->
-			<fieldset>
-				<legend>My Role</legend>
+                <label>Roll Number</label>
+                <input name="against_student_roll_number">
 
-				<select id="role" name="my_role" onchange="myRoleChange()">
-					<option value="">Select</option>
-					<option value="student">Student</option>
-					<option value="teacher">Teacher</option>
-					<option value="head">Head</option>
-				</select>
+                <label>Complaint</label>
+                <textarea name="against_student_complaint_text"></textarea>
+            </div>
 
-				<!-- My Student -->
-				<div id="student" style="display:none">
-					<label>Full Name</label>
-					<input name="my_student_full_name">
+            <div id="ateacher" style="display:none">
+                <label>Full Name</label>
+                <input name="against_teacher_full_name">
 
-					<label>Phone / Email</label>
-					<input name="my_student_contact_info">
+                <label>Phone / Email</label>
+                <input name="against_teacher_contact_info">
 
-					<label>Roll Number</label>
-					<input name="my_student_roll_number">
-				</div>
+                <label>Complaint</label>
+                <textarea name="against_teacher_complaint_text"></textarea>
+            </div>
 
-				<!-- My Teacher -->
-				<div id="teacher" style="display:none">
-					<label>Full Name</label>
-					<input name="my_teacher_full_name">
+            <div id="ahead" style="display:none">
+                <label>Full Name</label>
+                <input name="against_head_full_name">
 
-					<label>Phone / Email</label>
-					<input name="my_teacher_contact_info">
+                <label>Phone / Email</label>
+                <input name="against_head_contact_info">
 
-					<label>Teacher ID</label>
-					<input name="my_teacher_id">
-				</div>
+                <label>Complaint</label>
+                <textarea name="against_head_complaint_text"></textarea>
+            </div>
 
-				<!-- My Head -->
-				<div id="head" style="display:none">
-					<label>Full Name</label>
-					<input name="my_head_full_name">
+        </fieldset>
 
-					<label>Phone / Email</label>
-					<input name="my_head_contact_info">
+        <fieldset>
+            <legend>Complaint To</legend>
 
-					<label>Head ID</label>
-					<input name="my_head_id">
-				</div>
-			</fieldset>
+            <select id="to_role" name="to_role" onchange="toRoleChange()">
+                <option value="">Select</option>
+                <option value="teacher">Teacher</option>
+                <option value="head">Head</option>
+            </select>
 
-			<!-- ================= COMPLAINT AGAINST ================= -->
-			<fieldset>
-				<legend>Complaint Against</legend>
+            <div id="toteacher" style="display:none">
+                <label>Teacher Name</label>
+                <input name="to_teacher_full_name">
 
-				<select id="against" name="against_role" onchange="againstRoleChange()">
-					<option value="">Select</option>
-					<option value="student">Student</option>
-					<option value="teacher">Teacher</option>
-					<option value="head">Head</option>
-				</select>
+                <label>Phone / Email</label>
+                <input name="to_teacher_contact_info">
+            </div>
 
-				<!-- Against Student -->
-				<div id="astudent" style="display:none">
-					<label>Full Name</label>
-					<input name="against_student_full_name">
+            <div id="tohead" style="display:none">
+                <label>Head Name</label>
+                <input name="to_head_full_name">
 
-					<label>Roll Number</label>
-					<input name="against_student_roll_number">
+                <label>Phone / Email</label>
+                <input name="to_head_contact_info">
+            </div>
 
-					<label>Complaint</label>
-					<textarea name="against_student_complaint_text"></textarea>
-				</div>
+        </fieldset>
 
-				<!-- Against Teacher -->
-				<div id="ateacher" style="display:none">
-					<label>Full Name</label>
-					<input name="against_teacher_full_name">
+        <button type="submit">Submit Complaint</button>
 
-					<label>Phone / Email</label>
-					<input name="against_teacher_contact_info">
+    </form>
 
-					<label>Complaint</label>
-					<textarea name="against_teacher_complaint_text"></textarea>
-				</div>
+</body>
 
-				<!-- Against Head -->
-				<div id="ahead" style="display:none">
-					<label>Full Name</label>
-					<input name="against_head_full_name">
-
-					<label>Phone / Email</label>
-					<input name="against_head_contact_info">
-
-					<label>Complaint</label>
-					<textarea name="against_head_complaint_text"></textarea>
-				</div>
-			</fieldset>
-
-			<!-- ================= COMPLAINT TO ================= -->
-			<fieldset>
-				<legend>Complaint To</legend>
-
-				<select id="to_role" name="to_role" onchange="toRoleChange()">
-					<option value="">Select</option>
-					<option value="teacher">Teacher</option>
-					<option value="head">Head</option>
-				</select>
-
-				<!-- To Teacher -->
-				<div id="toteacher" style="display:none">
-					<label>Teacher Name</label>
-					<input name="to_teacher_full_name">
-
-					<label>Phone / Email</label>
-					<input name="to_teacher_contact_info">
-				</div>
-
-				<!-- To Head -->
-				<div id="tohead" style="display:none">
-					<label>Head Name</label>
-					<input name="to_head_full_name">
-
-					<label>Phone / Email</label>
-					<input name="to_head_contact_info">
-				</div>
-			</fieldset>
-
-
-			<button type="submit">Submit Complaint</button>
-
-		</form>
-
-	</body>
 </html>

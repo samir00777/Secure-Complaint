@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+--bg-color: #F4F7F9;
+--form-bg-color: #FFFFFF;
+--text-color: #2D3748;
+--text-light: #718096;
+--accent-color: #3182CE;
+--accent-hover: #2B6CB0;
+--border-color: #E2E8F0;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--bg-color);
+margin: 0;
+padding: 60px 20px;
+color: var(--text-color);
+display: flex;
+justify-content: center;
+}
+
+form {
+background: var(--form-bg-color);
+max-width: 768px;
+width: 100%;
+padding: 48px;
+border-radius: 12px;
+box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05),
+0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+/* same CSS as your file */
